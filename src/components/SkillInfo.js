@@ -11,7 +11,7 @@ export default function SkillInfo ({heading, skills}) {
     <>
       
       <div className="skill-info-card">
-        <h4 className="text-center">{heading}</h4>
+        <h4 className="text-start">{heading}</h4>
 
         <div className="skill-content-info">
           {skills.map((item, i) => (
