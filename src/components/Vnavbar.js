@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import '../App.css';
 import MobileNav from "./MobileNav";
+import { BsX, BsFilterRight } from "react-icons/bs";
 
 export default function Vnavbar() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -17,7 +18,7 @@ export default function Vnavbar() {
       <nav className="nav-wrapper">
         <div className="container-fluid nav-content">
           <h1>Carmelo La Mantia</h1>
-          <img className='logo_1 rounded-5' src='./assets/icon/laravel.jpg' alt="logo" />
+          <img className='logo_1 rounded-5 mx-1' src='./assets/icon/laravel.jpg' alt="logo" />
 
           <ul>
             <li>
@@ -42,7 +43,7 @@ export default function Vnavbar() {
             <button className='menu-btn' onClick={toggleMenu}>
               <span className={'material-symbols-outlined'}
                 style={{fontSize:'1.8rem'}} >
-                {openMenu ? "x" : "o"}
+                {openMenu ? <BsX /> : <BsFilterRight />}
               </span>
             </button>
             

@@ -6,7 +6,8 @@ import "../Hero.css";
 export default function Hero() {
   return (
     <>
-      <div className="row hero-box">
+      <section className="row hero-box">
+      
         <div className="col-12 col-md-8 hero-content">
           <h2>Lorem ipsum dolor sit amet consectetur </h2>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni incidunt id autem consequatur! Voluptatibus ullam, quia eligendi animi</p>
@@ -38,9 +39,8 @@ export default function Hero() {
 
         </div>
 
-      
+      </section>
 
-      </div>
     </>
   );
 }

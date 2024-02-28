@@ -15,19 +15,19 @@ export default function MobileNav({isOpen, toggleMenu}) {
 
           <ul>
             <li>
-              <a className="menu-item" href="">Home</a>
+              <a className="menu-item" href="/">Home</a>
             </li>
 
             <li>
-              <a className="menu-item" href="">Skill</a>
+              <a className="menu-item" href="/">Skill</a>
             </li>
 
             <li>
-              <a className="menu-item" href="">Project</a>
+              <a className="menu-item" href="/">Project</a>
             </li>
 
             <li>
-              <a className="menu-item" href="">Contact</a>
+              <a className="menu-item" href="/">Contact</a>
             </li>
 
             <button className="contact_btn" onClick={() => {}}>Hire Me</button>
