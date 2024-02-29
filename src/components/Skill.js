@@ -16,7 +16,7 @@ export default function Skill() {
   return (
     <>
       
-      <section className="container skill-box">
+      <section className="container skill-box" id="skills">
         <h5>Technical Proficiency</h5>
 
         <div className="row skill-content">

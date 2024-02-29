@@ -41,7 +41,7 @@ export default function WorkExp () {
   return (
     <>
       
-      <section className="row exp-box">
+      <section className="row exp-box" id="work-exp">
         <h3>Work Experience</h3>
 
         <div className="col-12 exp-content">

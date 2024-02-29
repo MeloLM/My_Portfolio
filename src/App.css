@@ -128,7 +128,7 @@ body{
 /* MEDIA QUERY FOR BUTTON */
 @media(max-width: 425px) {
 	.logo_1{
-		width: 10rem;
+		width: 6.5rem;
 		height: auto;
 	}
 }
@@ -136,11 +136,16 @@ body{
 @media(max-width: 769px) {
 	.menu-btn{
 		display: block;
+    margin-left: 1rem;
 	}
 
 	.nav-content ul{
 		display: none;
 	}
+
+  .nav-content h1 {
+    margin-left: -3rem;
+  }
 }
 
 @media(max-width: 1325px) {

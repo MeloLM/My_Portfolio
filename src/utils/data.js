@@ -44,8 +44,8 @@ export const SKILLS = [
 
 export const WORK_EXPS = [
   {
-  title: "Work Experience 1",
-  date: "2020-2020",
+  title: "Addetto vendite tabacchi",
+  date: "2023 luglio - 2024 gennaio",
   respons: [
     "Lorem ipsum dolor sit amet consectetur, adipisicing elit. In sunt provident assumenda reprehenderit quod, temporibus incidunt sit sapiente delectus? Voluptas fuga voluptatem sit iure ",
     "Quod, temporibus incidunt sit sapiente delectus? Voluptas fuga voluptatem sit iure rem corporis, a assumenda voluptatum nemo?",
