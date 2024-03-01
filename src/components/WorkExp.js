@@ -54,7 +54,6 @@ export default function WorkExp () {
             <span> <BsArrowLeftShort /> </span>
           </div>
 
-
           <Slider ref={sliderRef} {...settings}>
             {WORK_EXPS.map((item) => (
               <ExpCard key={item.title} details={item} />

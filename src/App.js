@@ -4,6 +4,7 @@ import Vnavbar from './components/Vnavbar';
 import Hero from "./components/Hero";
 import Skill from "./components/Skill";
 import WorkExp from "./components/WorkExp";
+import Contact from "./components/ContactMe";
 
 export default function App() {
   return (
@@ -21,6 +22,10 @@ export default function App() {
       
       <div className="container">
         <WorkExp />
+      </div>
+
+      <div className="container">
+        <Contact />
       </div>
 
     </>
