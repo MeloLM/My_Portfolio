@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import Skill from "./components/Skill";
 import WorkExp from "./components/WorkExp";
 import Contact from "./components/ContactMe";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
@@ -27,6 +28,8 @@ export default function App() {
       <div className="container">
         <Contact />
       </div>
+
+      <Footer />
 
     </>
   );

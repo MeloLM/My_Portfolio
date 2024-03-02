@@ -1,6 +1,6 @@
 import { React } from "react";
 import '../App.css';
-import '../ExpCard.css';
+import '../style/ExpCard.css';
 
 export default function ExpCard ({details}) {
   return (

@@ -1,6 +1,6 @@
 import { React } from "react";
 import '../App.css';
-import '../ContactMe.css';
+import '../style/ContactMe.css';
 import ContactCard from "./ContactCard";
 import ContactForm from "./ContactForm";
 

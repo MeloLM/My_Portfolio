@@ -1,6 +1,6 @@
 import { React } from "react";
 import '../App.css';
-import '../MobileNav.css'
+import '../style/MobileNav.css'
 
 export default function MobileNav({isOpen, toggleMenu}) {
   return (

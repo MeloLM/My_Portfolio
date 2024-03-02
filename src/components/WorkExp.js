@@ -1,6 +1,6 @@
 import { React, useRef } from "react";
 import '../App.css';
-import '../WorkExp.css';
+import '../style/WorkExp.css';
 import { WORK_EXPS } from '../utils/data';
 import ExpCard from "./ExpCard";
 import Slider from "react-slick";
