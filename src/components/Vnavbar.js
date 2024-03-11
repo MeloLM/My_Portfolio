@@ -34,7 +34,7 @@ export default function Vnavbar() {
             </li>
 
             <li>
-              <a className="menu-item" href="/">Contact</a>
+              <a className="menu-item" href="#contact">Contact</a>
             </li>
 
             <button className="contact_btn" onClick={() => {}}>Hire Me</button>

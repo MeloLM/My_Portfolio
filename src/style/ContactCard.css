@@ -27,7 +27,9 @@
   object-fit: contain;
 }
 
-.contact-card p {
+.contact-card a {
+  text-decoration: none;
+  color: white;
   font-size: 0.9rem;
   font-weight: 400;
 }

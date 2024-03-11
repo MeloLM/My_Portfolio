@@ -2,7 +2,7 @@ import { React } from "react";
 import '../App.css';
 import '../style/ContactCard.css';
 
-export default function ContactCard ({iconUrl, text}) {
+export default function ContactCard ({iconUrl, text, linkText}) {
 
 
   return (
@@ -13,7 +13,7 @@ export default function ContactCard ({iconUrl, text}) {
           <img src={iconUrl} alt={text} />
         </div>
 
-        <p>{text}</p>
+        <a href={linkText} target="_blank" rel="noopener noreferrer">{text}</a>
       </div>
 
     </>

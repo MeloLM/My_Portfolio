@@ -10,18 +10,20 @@ export default function Contact () {
   return (
     <>
       
-      <div className="container contact-box">
+      <div className="container contact-box" id="contact">
         <h4>Contact Me</h4>
 
         <div className="row contact-content">
           <div className="col-12 col-md-6" style={{flex: 1 }}>
             <ContactCard 
               iconUrl="./assets/icon/php.png"
-              text="melo123@email.com"
+              text="Send me a email"
+              linkText="mailto:carmelo.la.mantia00@gmail.com"
             />
             <ContactCard 
               iconUrl="./assets/icon/github.png"
-              text="https://github.com/MeloLM"
+              text="@MeloLM - gitHub"
+              linkText="https://github.com/MeloLM"
             />
           </div>
 
