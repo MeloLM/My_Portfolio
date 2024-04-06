@@ -10,6 +10,8 @@ export default function Vnavbar() {
     setOpenMenu(!openMenu);
   };
 
+  
+
   return (
     <>
 
@@ -37,7 +39,9 @@ export default function Vnavbar() {
               <a className="menu-item" href="#contact">Contact</a>
             </li>
 
-            <button className="contact_btn" onClick={() => {}}>Hire Me</button>
+            <a className="text-decoration-none" target="_blank" rel="noreferrer noopener" href="https://docs.google.com/document/d/e/2PACX-1vT4HRmeOmilEDtiuiQHmU_o9lJrp4kDKlx-2VWOBklzRMeq9sN3HVjcDPeIaZNtomYkMOyEPonUkeqN/pub">
+              <button className="contact_btn" onClick={() => {}}>Hire Me</button>
+            </a>
           </ul>
             
             <button className='menu-btn' onClick={toggleMenu}>
