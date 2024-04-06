@@ -9,7 +9,7 @@ export default function Footer () {
     <>
       
       <div className="footer-box">
-        <p>© 2024 | Edited by <span>Carmelo La Mantia</span></p>
+        <p>© 2024 | Developed by <span>Carmelo La Mantia</span></p>
       </div>
 
     </>

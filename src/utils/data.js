@@ -44,33 +44,30 @@ export const SKILLS = [
 
 export const WORK_EXPS = [
   {
-  title: "Addetto vendite tabacchi",
+  title: "Addetto Vendite Tabacchi",
   date: "2023 luglio - 2024 gennaio",
   respons: [
-    "Lorem ipsum dolor sit amet consectetur, adipisicing elit. In sunt provident assumenda reprehenderit quod, temporibus incidunt sit sapiente delectus? Voluptas fuga voluptatem sit iure ",
-    "Quod, temporibus incidunt sit sapiente delectus? Voluptas fuga voluptatem sit iure rem corporis, a assumenda voluptatum nemo?",
-    "Lorem ipsum dolor sit amet consectetur, adipisicing elit. In sunt provident assumenda reprehenderit quod, temporibus incidunt sit sapiente delectus? Voluptas fuga",
-    "Developed a web application for managing"
+    "Vendita di prodotti: La vendita di tabacchi, sigarette, sigari, articoli da fumo, cartine e accessori correlati è una delle mansioni principali. Il personale del tabacchi assiste i clienti nella scelta dei prodotti, fornisce informazioni sui diversi tipi di tabacco e offre consulenza sui prodotti disponibili.",
+    "Gestione delle transazioni finanziarie: Presso un tabacchi, il personale gestisce anche transazioni finanziarie come la vendita di biglietti per i mezzi pubblici, ricariche telefoniche, pagamento di bollette e servizi di gioco come lotterie e gratta e vinci. È responsabile dell'accurata registrazione delle transazioni e dell'assolvimento degli obblighi fiscali.",
+    "Controllo dell'età e del rispetto delle normative: Un'altra importante mansione è garantire il rispetto delle leggi in materia di età minima per l'acquisto di prodotti del tabacco. Il personale del tabacchi deve verificare l'età dei clienti e assicurarsi che non vendano tabacco a persone sotto l'età legale. Inoltre, devono essere a conoscenza delle normative locali riguardanti la vendita di tabacco e assicurarsi che il negozio sia conforme a tali regolamenti.",
     ],
   },
   {
-  title: "Work Experience 2",
-  date: "2020-2020",
+  title: "Cameriere Ristorante",
+  date: "2018 - 2023",
   respons: [
-    "Lorem ipsum dolor sit amet consectetur, adipisicing elit. In sunt provident assumenda reprehenderit quod, temporibus incidunt sit sapiente delectus? Voluptas fuga voluptatem sit iure ",
-    "Quod, temporibus incidunt sit sapiente delectus? Voluptas fuga voluptatem sit iure rem corporis, a assumenda voluptatum nemo?",
-    "Lorem ipsum dolor sit amet consectetur, adipisicing elit. In sunt provident assumenda reprehenderit quod, temporibus incidunt sit sapiente delectus? Voluptas fuga",
-    "Developed a web application for managing"
+    "Servizio ai clienti: Il cameriere è responsabile di accogliere i clienti, accompagnandoli al loro tavolo e fornendo loro i menu. Durante il pasto, il cameriere prende gli ordini, suggerisce piatti o bevande, serve il cibo e le bevande, e si assicura che i clienti abbiano tutto ciò di cui hanno bisogno per godersi il pasto, come posate pulite o ulteriori condimenti.",
+    "Gestione delle ordinazioni e dei pagamenti: Il cameriere registra accuratamente gli ordini dei clienti, assicurandosi di prendere nota di eventuali modifiche o richieste speciali. Alla fine del pasto, emette il conto ai clienti, accetta i pagamenti e fornisce lo scontrino o la ricevuta. Deve anche essere in grado di gestire i pagamenti in contanti e con carta di credito o debito.",
+    "Mantenimento della pulizia e dell'ordine: Durante il servizio, il cameriere mantiene la pulizia e l'ordine nell'area dei tavoli, rimuovendo piatti vuoti e posate sporche, pulendo eventuali schizzi o macchie e preparando i tavoli per i nuovi clienti. Alla fine della giornata lavorativa, partecipa alla pulizia generale del ristorante, che può includere la pulizia dei tavoli, delle sedie, del pavimento e dei bagni.",
     ],
   },
   {
-  title: "Work Experience 3",
-  date: "2020-2020",
+  title: "Full-Stack Web Developer",
+  date: "2023 - in corso",
   respons: [
-    "Lorem ipsum dolor sit amet consectetur, adipisicing elit. In sunt provident assumenda reprehenderit quod, temporibus incidunt sit sapiente delectus? Voluptas fuga voluptatem sit iure ",
-    "Quod, temporibus incidunt sit sapiente delectus? Voluptas fuga voluptatem sit iure rem corporis, a assumenda voluptatum nemo?",
-    "Lorem ipsum dolor sit amet consectetur, adipisicing elit. In sunt provident assumenda reprehenderit quod, temporibus incidunt sit sapiente delectus? Voluptas fuga",
-    "Developed a web application for managing"
+    "Sviluppo del front-end: Il full-stack web developer è responsabile della creazione del front-end di un sito web o di un'applicazione web. Ciò include la scrittura di codice HTML, CSS e JavaScript per creare interfacce utente interattive e responsive. Utilizzando framework come React, Angular o Vue.js, il full-stack developer progetta e implementa le pagine web per garantire un'esperienza utente ottimale.",
+    "Sviluppo del back-end: Questa mansione implica la progettazione e lo sviluppo del back-end di un'applicazione web, che gestisce le funzionalità non visibili agli utenti finali. Il full-stack developer utilizza linguaggi di programmazione come JavaScript (Node.js), Python (Django o Flask), Ruby (Ruby on Rails) o Java (Spring) per creare server, database e API che supportano il funzionamento del sito o dell'applicazione.",
+    "Gestione dei database e delle operazioni: Il full-stack developer è spesso coinvolto nella gestione dei database utilizzati dall'applicazione. Questo include la progettazione del database, la creazione di schemi, la scrittura di query SQL o l'utilizzo di ORM (Object-Relational Mapping) per interagire con il database. Inoltre, può essere coinvolto nella gestione delle operazioni del server, ad esempio il deployment dell'applicazione su server cloud come AWS, Azure o Google Cloud Platform, e la configurazione di servizi come Docker o Kubernetes per la gestione dei container.",
     ],
   },
 ];

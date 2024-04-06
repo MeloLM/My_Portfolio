@@ -18,7 +18,7 @@ export default function Vnavbar() {
       <nav className="nav-wrapper">
         <div className="container-fluid nav-content">
           <h1>Carmelo La Mantia</h1>
-          <img className='logo_1 rounded-5 mx-1' src='./assets/icon/laravel.jpg' alt="logo" />
+          
 
           <ul>
             <li>

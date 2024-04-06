@@ -16,7 +16,7 @@ export default function Contact () {
         <div className="row contact-content">
           <div className="col-12 col-md-6" style={{flex: 1 }}>
             <ContactCard 
-              iconUrl="./assets/icon/php.png"
+              iconUrl="./assets/icon/gmail_icon.png"
               text="Send me a email"
               linkText="mailto:carmelo.la.mantia00@gmail.com"
             />
@@ -28,6 +28,10 @@ export default function Contact () {
           </div>
 
           <div className="col-12 col-md-6" style={{flex: 1 }}>
+            <ContactCard 
+              iconUrl="./assets/icon/WA_icon.png"
+              text="Write me a message here"
+            />
             <ContactForm />
           </div>
         </div>
