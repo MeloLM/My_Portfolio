@@ -4,3 +4,7 @@
   background: linear-gradient(90deg, #3d3072 0%, #423477 100%);
   padding: 1rem;
 }
+
+span {
+  font-style: italic;
+}

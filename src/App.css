@@ -16,6 +16,44 @@ body{
  --sec-color: #7e61e7;
 }
 
+:root{
+  --orange-1: #FF6D00;
+  --orange-2: #FF7900;
+  --orange-3: #FF8500;
+  --orange-4: #FF9100;
+  --orange-5: #FF9E00;
+
+  --purple-1: #240046;
+  --purple-2: #3C096C;
+  --purple-3: #5A189A;
+  --purple-4: #7B2CBF;
+  --purple-5: #9D4EDD;
+}
+
+/* CUSTOM SCROLLBAR */
+ 
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(128, 128, 128, 0.326); 
+  border-radius: 2px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--main-color); 
+  border-radius: 3px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sec-color); 
+}
+
 .nav-wrapper{
   background: rgba(0, 0 , 0, 0.1);
   padding: 0.5rem 0;
