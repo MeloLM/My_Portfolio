@@ -1,111 +1,159 @@
+// ============================================================================
+// 📊 DATA.JS - Dati centralizzati del portfolio
+// Ultimo aggiornamento: 11 Gennaio 2026
+// ============================================================================
+
+// 🎯 SKILLS - Competenze tecniche e soft skills
 export const SKILLS = [
   {
     title: "Front-End",
     icon: "./assets/icon/frontEnd.png",
     skill: [
-      {skill: "HTML5", percentage: "80%"},
-      {skill: "React.js", percentage: "65%"},
-      {skill: "JavaScript", percentage: "70%"},
-      {skill: "CSS3", percentage: "60%"}
-      ],
+      { skill: "HTML5", percentage: "85%" },
+      { skill: "CSS3", percentage: "80%" },
+      { skill: "JavaScript", percentage: "75%" },
+      { skill: "React.js", percentage: "70%" },
+    ],
   },
   {
     title: "Back-End",
     icon: "./assets/icon/backEnd.png",
     skill: [
-      {skill: "Node.js", percentage: "80%"},
-      {skill: "MySql", percentage: "65%"},
-      {skill: "PHP", percentage: "70%"},
-      {skill: "COBOL", percentage: "20%"}  
-      ],
+      { skill: "PHP", percentage: "75%" },
+      { skill: "Node.js", percentage: "65%" },
+      { skill: "Laravel", percentage: "60%" },
+      { skill: "MySQL", percentage: "70%" },
+    ],
   },
   {
     title: "Tools",
     icon: "./assets/icon/tools.png",
     skill: [
-      {skill: "Git & GitHub", percentage: "80%"},
-      {skill: "Visual Studio Code", percentage: "85%"},
-      {skill: "Webpack", percentage: "70%"},
-      {skill: "Responsive Design", percentage: "60%"}
-      ],
+      { skill: "Git & GitHub", percentage: "80%" },
+      { skill: "Visual Studio Code", percentage: "90%" },
+      { skill: "WordPress", percentage: "65%" },
+      { skill: "GitHub Copilot", percentage: "75%" },
+    ],
   },
   {
     title: "Soft Skills",
     icon: "./assets/icon/soft_skill.png",
     skill: [
-      {skill: "Problem-solving", percentage: "80%"},
-      {skill: "Collaboration", percentage: "75%"},
-      {skill: "Attention to Detail", percentage: "70%"},
-      {skill: "Communicate to client", percentage: "60%"}
-      ],
-  }
+      { skill: "Problem Solving", percentage: "85%" },
+      { skill: "Time Management", percentage: "80%" },
+      { skill: "Team Work", percentage: "80%" },
+      { skill: "Communication", percentage: "75%" },
+    ],
+  },
 ];
 
-
+// 💼 WORK EXPERIENCES - Esperienze lavorative (ordine cronologico inverso)
 export const WORK_EXPS = [
   {
-  title: "Addetto Vendite Tabacchi",
-  date: "2023 luglio - 2024 gennaio",
-  respons: [
-    "Vendita di prodotti: La vendita di tabacchi, sigarette, sigari, articoli da fumo, cartine e accessori correlati è una delle mansioni principali. Il personale del tabacchi assiste i clienti nella scelta dei prodotti, fornisce informazioni sui diversi tipi di tabacco e offre consulenza sui prodotti disponibili.",
-    "Gestione delle transazioni finanziarie: Presso un tabacchi, il personale gestisce anche transazioni finanziarie come la vendita di biglietti per i mezzi pubblici, ricariche telefoniche, pagamento di bollette e servizi di gioco come lotterie e gratta e vinci. È responsabile dell'accurata registrazione delle transazioni e dell'assolvimento degli obblighi fiscali.",
-    "Controllo dell'età e del rispetto delle normative: Un'altra importante mansione è garantire il rispetto delle leggi in materia di età minima per l'acquisto di prodotti del tabacco. Il personale del tabacchi deve verificare l'età dei clienti e assicurarsi che non vendano tabacco a persone sotto l'età legale. Inoltre, devono essere a conoscenza delle normative locali riguardanti la vendita di tabacco e assicurarsi che il negozio sia conforme a tali regolamenti.",
+    title: "Addetto alla Logistica",
+    company: "Rueesch srl - Abbigliamento Professionale",
+    location: "Canicattì (AG), Sicilia",
+    date: "2025 - Presente",
+    respons: [
+      "Time Management: Gestione efficiente dei tempi per garantire il rispetto delle scadenze di consegna e ottimizzare i flussi di lavoro.",
+      "Lavoro in Team: Collaborazione con colleghi per coordinare le attività di magazzino e garantire un servizio efficiente.",
+      "Precisione Operativa: Controllo accurato dell'inventario, gestione delle spedizioni e verifica della qualità dei prodotti.",
     ],
   },
   {
-  title: "Cameriere Ristorante",
-  date: "2018 - 2023",
-  respons: [
-    "Servizio ai clienti: Il cameriere è responsabile di accogliere i clienti, accompagnandoli al loro tavolo e fornendo loro i menu. Durante il pasto, il cameriere prende gli ordini, suggerisce piatti o bevande, serve il cibo e le bevande, e si assicura che i clienti abbiano tutto ciò di cui hanno bisogno per godersi il pasto, come posate pulite o ulteriori condimenti.",
-    "Gestione delle ordinazioni e dei pagamenti: Il cameriere registra accuratamente gli ordini dei clienti, assicurandosi di prendere nota di eventuali modifiche o richieste speciali. Alla fine del pasto, emette il conto ai clienti, accetta i pagamenti e fornisce lo scontrino o la ricevuta. Deve anche essere in grado di gestire i pagamenti in contanti e con carta di credito o debito.",
-    "Mantenimento della pulizia e dell'ordine: Durante il servizio, il cameriere mantiene la pulizia e l'ordine nell'area dei tavoli, rimuovendo piatti vuoti e posate sporche, pulendo eventuali schizzi o macchie e preparando i tavoli per i nuovi clienti. Alla fine della giornata lavorativa, partecipa alla pulizia generale del ristorante, che può includere la pulizia dei tavoli, delle sedie, del pavimento e dei bagni.",
+    title: "Addetto alle Vendite",
+    company: "Rivendita Tabacchi 25",
+    location: "Canicattì (AG), Sicilia",
+    date: "2023 - 2024",
+    respons: [
+      "Problem Solving: Risoluzione rapida di problematiche con clienti e gestione di situazioni complesse al banco.",
+      "Customer Care: Assistenza clienti professionale, consulenza sui prodotti e fidelizzazione della clientela.",
+      "Affidabilità e Gestione Cassa: Responsabilità nella gestione delle transazioni finanziarie e chiusura cassa.",
     ],
   },
   {
-  title: "Full-Stack Web Developer",
-  date: "2023 - in corso",
-  respons: [
-    "Sviluppo del front-end: Il full-stack web developer è responsabile della creazione del front-end di un sito web o di un'applicazione web. Ciò include la scrittura di codice HTML, CSS e JavaScript per creare interfacce utente interattive e responsive. Utilizzando framework come React, Angular o Vue.js, il full-stack developer progetta e implementa le pagine web per garantire un'esperienza utente ottimale.",
-    "Sviluppo del back-end: Questa mansione implica la progettazione e lo sviluppo del back-end di un'applicazione web, che gestisce le funzionalità non visibili agli utenti finali. Il full-stack developer utilizza linguaggi di programmazione come JavaScript (Node.js), Python (Django o Flask), Ruby (Ruby on Rails) o Java (Spring) per creare server, database e API che supportano il funzionamento del sito o dell'applicazione.",
-    "Gestione dei database e delle operazioni: Il full-stack developer è spesso coinvolto nella gestione dei database utilizzati dall'applicazione. Questo include la progettazione del database, la creazione di schemi, la scrittura di query SQL o l'utilizzo di ORM (Object-Relational Mapping) per interagire con il database. Inoltre, può essere coinvolto nella gestione delle operazioni del server, ad esempio il deployment dell'applicazione su server cloud come AWS, Azure o Google Cloud Platform, e la configurazione di servizi come Docker o Kubernetes per la gestione dei container.",
+    title: "Cameriere",
+    company: "VII Coorte Ristorante",
+    location: "Roma (Lazio)",
+    date: "2022 - 2023",
+    respons: [
+      "Gestione dello Stress: Capacità di lavorare efficacemente sotto pressione durante i servizi più intensi.",
+      "Comunicazione Efficace: Interazione professionale con clienti italiani e internazionali, presa ordini e suggerimenti.",
+      "Adattabilità: Flessibilità nel gestire diverse situazioni e ambienti dinamici del settore ristorazione.",
     ],
   },
 ];
 
-// 📌 PROGETTI - Modifica qui per aggiungere/rimuovere progetti
+// 🚀 PROJECTS - Progetti personali (dal CV)
 export const PROJECTS = [
   {
-    title: "Portfolio Personale",
-    description: "Il mio portfolio personale realizzato con React, Bootstrap e animazioni CSS. Design moderno e responsive.",
-    image: "./assets/image/profile.jpg", // Sostituisci con screenshot del progetto
+    title: "Shooter Game",
+    description: "Gioco sparatutto sviluppato con Phaser 3. Gameplay dinamico con nemici, power-up e sistema di punteggio.",
+    image: "./assets/image/projects/shooter.jpg",
+    technologies: ["JavaScript", "Phaser 3", "HTML5 Canvas", "CSS"],
+    github: "https://github.com/MeloLM",
+    demo: "https://melolm.github.io/shooter", // Aggiorna con link reale
+  },
+  {
+    title: "My Portfolio",
+    description: "Portfolio personale custom sviluppato con React. Design moderno, responsive e ottimizzato per SEO.",
+    image: "./assets/image/projects/portfolio.jpg",
     technologies: ["React", "Bootstrap", "CSS3", "JavaScript"],
-    github: "https://github.com/MeloLM",
-    demo: null // Aggiungi link demo quando disponibile
+    github: "https://github.com/MeloLM/My_Portfolio",
+    demo: "https://melolm.github.io/My_Portfolio",
   },
   {
-    title: "Progetto E-Commerce",
-    description: "Piattaforma e-commerce con carrello, autenticazione utenti e gestione ordini. Backend in Node.js.",
-    image: "./assets/image/profile.jpg", // Sostituisci con screenshot del progetto
-    technologies: ["React", "Node.js", "MySQL", "Express"],
-    github: "https://github.com/MeloLM",
-    demo: null
+    title: "SoulsSpace Blog",
+    description: "Blog funzionale in sviluppo con Laravel. Sistema di articoli, categorie e gestione utenti.",
+    image: "./assets/image/projects/blog.jpg",
+    technologies: ["Laravel", "PHP", "MySQL", "Blade"],
+    github: "https://github.com/MeloLM/soulsspace",
+    demo: null, // In progress
   },
   {
-    title: "Dashboard Analytics",
-    description: "Dashboard interattiva per visualizzazione dati con grafici e statistiche in tempo reale.",
-    image: "./assets/image/profile.jpg", // Sostituisci con screenshot del progetto
-    technologies: ["React", "Chart.js", "API REST", "CSS"],
+    title: "Sushi Menu",
+    description: "Menu interattivo all-you-can-eat sviluppato in React. Interfaccia intuitiva per ordinazioni digitali.",
+    image: "./assets/image/projects/sushi.jpg",
+    technologies: ["React", "CSS3", "JavaScript", "JSON"],
     github: "https://github.com/MeloLM",
-    demo: null
-  }
+    demo: "https://melolm.github.io/sushi-menu", // Aggiorna con link reale
+  },
 ];
 
-// 💡 SUGGERIMENTO: Per aggiungere un nuovo progetto, copia questa struttura:
-// {
-//   title: "Nome Progetto",
-//   description: "Descrizione breve del progetto",
-//   image: "./assets/image/nome-screenshot.jpg",
-//   technologies: ["Tech1", "Tech2", "Tech3"],
-//   github: "https://github.com/username/repo",
-//   demo: "https://link-demo.com"  // o null se non c'è demo
-// }
+// 🎓 EDUCATION - Formazione (opzionale, per future implementazioni)
+export const EDUCATION = [
+  {
+    title: "Laurea Triennale in Ingegneria Informatica",
+    institution: "Università E-campus",
+    location: "AG, Sicilia",
+    date: "2025 - In corso",
+  },
+  {
+    title: "Corso Full Stack Developer",
+    institution: "Aulab srl",
+    location: "Bari",
+    date: "Gennaio 2023 - Aprile 2023",
+  },
+  {
+    title: "Corso Tecnico Gestione Siti Web",
+    institution: "Empatia",
+    location: "Canicattì (AG)",
+    date: "2021 - 2022",
+  },
+  {
+    title: "Diploma C.A.T. (Costruzioni, Ambiente e Territorio)",
+    institution: "IISS Galileo Galilei",
+    location: "Canicattì (AG)",
+    date: "2014 - 2019",
+  },
+];
+
+// 📞 CONTACT INFO - Informazioni di contatto
+export const CONTACT_INFO = {
+  phone: "+39 351 084 5851",
+  email: "carmelo.la.mantia00@gmail.com",
+  location: "Agrigento, Sicilia, Italy",
+  github: "https://github.com/MeloLM",
+  linkedin: "https://linkedin.com/in/carmelo-la-mantia", // Aggiorna con link reale
+  portfolio: "https://melolm.github.io/My_Portfolio",
+};

@@ -1,4 +1,4 @@
-.exp-card{
+.exp-card {
   background: #130f2a;
   border-radius: 0.65rem;
   border: 1.5px solid #6751b9;
@@ -9,6 +9,21 @@
 .exp-card h5 {
   font-size: 1.05rem;
   font-weight: 500;
+  margin-bottom: 0.3rem;
+  color: var(--main-color);
+}
+
+.exp-company {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #ccc;
+  margin-bottom: 0.2rem;
+}
+
+.exp-location {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: #999;
   margin-bottom: 0.7rem;
 }
 
@@ -42,17 +57,19 @@
 }
 
 @media (max-width: 768px) {
-  
   .exp-card {
     margin: 0;
   }
 
-  .exp-card h5{
+  .exp-card h5 {
     font-size: 0.95rem;
+  }
+
+  .exp-company {
+    font-size: 0.8rem;
   }
 
   .exp-card ul li {
     font-size: 0.75rem;
   }
-
 }

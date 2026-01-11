@@ -50,7 +50,7 @@ src/utils/data.js
 │     skill: [{skill: string, percentage: string}]
 │   }
 │
-├─► PROJECTS[n] ──► Projects.js
+├─► PROJECTS[4] ──► Projects.js
 │   │                └── map() → ProjectCard(hover→links)
 │   │
 │   schema: {
@@ -61,14 +61,41 @@ src/utils/data.js
 │     github: string|null,
 │     demo: string|null
 │   }
+│   
+│   projects: [
+│     "Shooter Game" (Java),
+│     "My Portfolio" (React),
+│     "SoulsSpace Blog" (Laravel),
+│     "Sushi Menu" (HTML/CSS/JS)
+│   ]
 │
-└─► WORK_EXPS[n] ──► WorkExp.js
-                      └── Slider → map() → ExpCard
-    
-    schema: {
-      title: string,
-      date: string,
-      respons: string[]
+├─► WORK_EXPS[3] ──► WorkExp.js
+│                      └── Slider → map() → ExpCard
+│   
+│   schema: {
+│     title: string,
+│     company: string,
+│     location: string,
+│     date: string,
+│     respons: string[]
+│   }
+│
+├─► EDUCATION[4] ──► (not yet implemented)
+│   
+│   schema: {
+│     title: string,
+│     institution: string,
+│     date: string,
+│     description: string
+│   }
+│
+└─► CONTACT_INFO ──► ContactMe.js
+    {
+      whatsapp: string,
+      email: string,
+      linkedin: string,
+      github: string,
+      location: string
     }
 ```
 
@@ -145,9 +172,20 @@ public/
 │   │   ├── react.png
 │   │   ├── github.png
 │   │   ├── php.png
-│   │   ├── lara.webp
-│   │   ├── laravel.jpg
+│   │   ├── laravel.png
+│   │   ├── html.png
+│   │   ├── phyton.png
 │   │   ├── gmail_icon.png
+│   │   └── WA_icon.png
+│   │
+│   └── image/
+│       ├── profile.jpg        [hero]
+│       └── projects/          [project screenshots - TODO]
+│           ├── shooter-game.png
+│           ├── portfolio.png
+│           ├── soulsspace.png
+│           └── sushi-menu.png
+```
 │   │   └── WA_icon.png
 │   │
 │   └── image/
@@ -219,7 +257,6 @@ icons: react-icons (Bs* exports)
   "react-slick": "^0.30.2",
   "slick-carousel": "^1.8.1"
 }
-// Note: @emailjs/browser installed but NOT implemented - can be removed
 ```
 
 ---
@@ -232,5 +269,10 @@ icons: react-icons (Bs* exports)
 [x] @emailjs/browser dep unused → REMOVED (11/01/2026)
 [x] Missing SEO (canonical, sitemap, JSON-LD) → ADDED (11/01/2026)
 [x] Missing accessibility (aria-labels, focus) → ADDED (11/01/2026)
+[x] WORK_EXPS not aligned with CV → UPDATED (11/01/2026)
+[x] PROJECTS were placeholders → REPLACED with real projects (11/01/2026)
+[x] SKILLS missing Node.js/MySQL → ADDED (11/01/2026)
+[x] Unused files (logo.svg, test files) → REMOVED (11/01/2026)
+[ ] Project screenshots needed → add to public/assets/image/projects/
 [ ] Images not WebP format → convert for performance
 ```
