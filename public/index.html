@@ -2,51 +2,94 @@
 <html lang="it">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="./assets/icon/Melo_icon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- Favicon & Icons -->
+    <link rel="icon" href="./assets/icon/Melo_icon.ico" />
+    <link rel="apple-touch-icon" href="./assets/icon/Melo_icon.ico" />
+    
+    <!-- Theme -->
     <meta name="theme-color" content="#060417" />
+    <meta name="msapplication-TileColor" content="#060417" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://melolm.github.io/My_Portfolio/" />
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Portfolio di Carmelo La Mantia - Full Stack Web Developer. Sviluppo siti web moderni con React, Node.js, PHP e MySQL. Contattami per il tuo progetto!" />
-    <meta name="keywords" content="web developer, full stack, react, node.js, php, mysql, sviluppatore web, portfolio, carmelo la mantia" />
+    <meta name="keywords" content="web developer, full stack, react, node.js, php, mysql, sviluppatore web, portfolio, carmelo la mantia, frontend, backend" />
     <meta name="author" content="Carmelo La Mantia" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="googlebot" content="index, follow" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Carmelo La Mantia Portfolio" />
     <meta property="og:title" content="Carmelo La Mantia | Full Stack Web Developer" />
     <meta property="og:description" content="Portfolio di Carmelo La Mantia - Sviluppo siti web moderni e responsive. React, Node.js, PHP e molto altro." />
-    <meta property="og:image" content="./assets/image/profile.jpg" />
-    <meta property="og:url" content="https://melolm.github.io/portfolio" />
+    <meta property="og:image" content="https://melolm.github.io/My_Portfolio/assets/image/profile.jpg" />
+    <meta property="og:url" content="https://melolm.github.io/My_Portfolio/" />
+    <meta property="og:locale" content="it_IT" />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Carmelo La Mantia | Full Stack Web Developer" />
     <meta name="twitter:description" content="Portfolio di Carmelo La Mantia - Sviluppo siti web moderni e responsive." />
-    <meta name="twitter:image" content="./assets/image/profile.jpg" />
+    <meta name="twitter:image" content="https://melolm.github.io/My_Portfolio/assets/image/profile.jpg" />
+    <meta name="twitter:creator" content="@MeloLM" />
     
+    <!-- Resource Hints - Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="apple-touch-icon" href="./assets/icon/Melo_icon.ico" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
+    
+    <!-- PWA Manifest -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Structured Data - JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Carmelo La Mantia",
+      "alternateName": "MeloLM",
+      "jobTitle": "Full Stack Web Developer",
+      "description": "Sviluppatore Full Stack con esperienza in React, Node.js, PHP e MySQL",
+      "url": "https://melolm.github.io/My_Portfolio/",
+      "image": "https://melolm.github.io/My_Portfolio/assets/image/profile.jpg",
+      "email": "carmelo.la.mantia00@gmail.com",
+      "telephone": "+39-351-084-5851",
+      "sameAs": [
+        "https://github.com/MeloLM"
+      ],
+      "knowsAbout": [
+        "React.js",
+        "Node.js",
+        "JavaScript",
+        "PHP",
+        "MySQL",
+        "HTML5",
+        "CSS3",
+        "Bootstrap",
+        "Git"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Freelance"
+      }
+    }
+    </script>
+    
     <title>Carmelo La Mantia | Full Stack Web Developer</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
   </body>

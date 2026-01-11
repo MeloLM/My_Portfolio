@@ -7,20 +7,20 @@
 ## 🔴 ALTA PRIORITÀ
 
 ### Performance & Ottimizzazione
-- [ ] **Lazy loading immagini** — Aggiungere `loading="lazy"` alle immagini
+- [x] **Lazy loading immagini** — Aggiunto `loading="lazy"` a tutte le immagini ✅
 - [ ] **Convertire immagini in WebP** — Ridurre dimensioni assets
-- [ ] **Rimuovere @emailjs/browser** — Dipendenza non utilizzata in package.json
+- [x] **Rimuovere @emailjs/browser** — Dipendenza rimossa da package.json ✅
 
 ### Accessibilità (a11y)
-- [ ] **Aggiungere aria-labels** — Bottoni navigazione, link social
-- [ ] **Alt text descrittivi** — Migliorare alt delle immagini
-- [ ] **Focus states** — Migliorare visibilità focus per navigazione tastiera
-- [ ] **Skip to content** — Link per saltare la navigazione
+- [x] **Aggiungere aria-labels** — Aggiunti a bottoni navigazione, link social ✅
+- [x] **Alt text descrittivi** — Migliorato alt di tutte le immagini ✅
+- [x] **Focus states** — Aggiunti focus:visible styles in App.css ✅
+- [x] **Skip to content** — Aggiunto link per saltare la navigazione ✅
 
 ### SEO & Meta
-- [ ] **Canonical URL** — Aggiungere `<link rel="canonical">`
-- [ ] **Sitemap.xml** — Creare sitemap per search engines
-- [ ] **Structured Data** — Aggiungere JSON-LD schema Person/Portfolio
+- [x] **Canonical URL** — Aggiunto `<link rel="canonical">` ✅
+- [x] **Sitemap.xml** — Creato sitemap per search engines ✅
+- [x] **Structured Data** — Aggiunto JSON-LD schema Person/Portfolio ✅
 
 ---
 
@@ -37,7 +37,7 @@
 - [ ] **Screenshot reali progetti** — Sostituire profile.jpg con screenshot veri
 - [ ] **Sezione Testimonials** — Carousel recensioni clienti
 - [ ] **Blog/Articoli** — Collegare Medium/Dev.to o sistema markdown
-- [ ] **Download CV PDF** — Bottone download invece di Google Docs link
+- [x] **Download CV PDF** — Bottone download invece di Google Docs link ✅
 
 ### Internazionalizzazione
 - [ ] **i18n setup** — Installare `react-i18next`
@@ -70,6 +70,22 @@
 
 ## ✅ COMPLETATI
 
+### 11 Gennaio 2026 - SEO & Accessibility Update
+- [x] **Canonical URL** — Aggiunto `<link rel="canonical">` in index.html
+- [x] **Sitemap.xml** — Creato public/sitemap.xml per search engines
+- [x] **Structured Data JSON-LD** — Aggiunto schema Person con knowsAbout, sameAs
+- [x] **Lazy loading immagini** — Aggiunto `loading="lazy"` a Hero, SkillCard, ProjectCard, ContactCard, MobileNav
+- [x] **Aria-labels completi** — Aggiunti a Vnavbar, MobileNav, SkillCard, ProjectCard, ContactCard
+- [x] **Alt text descrittivi** — Migliorati tutti gli alt delle immagini
+- [x] **Focus states CSS** — Aggiunti stili focus:visible in App.css
+- [x] **Skip to content** — Aggiunto link accessibilità in App.js
+- [x] **CV download locale** — Sostituito Google Docs con PDF locale
+- [x] **Rimosso @emailjs/browser** — Dipendenza non utilizzata rimossa
+- [x] **Robots.txt aggiornato** — Aggiunto riferimento sitemap
+- [x] **Resource hints** — Aggiunti preconnect/dns-prefetch per CDN
+- [x] **Meta tags completi** — og:locale, og:site_name, twitter:creator, googlebot
+- [x] **Homepage in package.json** — Configurato per GitHub Pages
+
 ### 11 Gennaio 2026
 - [x] **Fix import React non necessari** — Rimosso `import { React }` da tutti i 12 componenti (React 17+ JSX transform)
 - [x] **Fix typo slidesToShow** — Corretto `slideToShow` → `slidesToShow` in WorkExp.js responsive settings
@@ -101,9 +117,9 @@
 
 | Categoria | Totali | Completati | In Attesa |
 |-----------|--------|------------|-----------|
-| Alta Priorità | 7 | 0 | 7 |
-| Media Priorità | 10 | 0 | 10 |
+| Alta Priorità | 10 | 9 | 1 |
+| Media Priorità | 10 | 1 | 9 |
 | Bassa Priorità | 12 | 0 | 12 |
-| **TOTALE** | **29** | **0** | **29** |
+| **TOTALE** | **32** | **10** | **22** |
 
 *Ultimo aggiornamento: 11 Gennaio 2026*

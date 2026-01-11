@@ -10,45 +10,49 @@ export default function Vnavbar() {
     setOpenMenu(!openMenu);
   };
 
-  
-
   return (
     <>
 
       <MobileNav isOpen={openMenu} toggleMenu={toggleMenu} />
 
-      <nav className="nav-wrapper">
+      <nav className="nav-wrapper" aria-label="Navigazione principale">
         <div className="container-fluid nav-content">
           <h1>Carmelo La Mantia</h1>
           
 
-          <ul>
-            <li>
-              <a className="menu-item" href="/">Home</a>
+          <ul role="menubar">
+            <li role="none">
+              <a className="menu-item" href="/" role="menuitem">Home</a>
             </li>
 
-            <li>
-              <a className="menu-item" href="#skills">Skill</a>
+            <li role="none">
+              <a className="menu-item" href="#skills" role="menuitem">Skill</a>
             </li>
 
-            <li>
-              <a className="menu-item" href="#projects">Projects</a>
+            <li role="none">
+              <a className="menu-item" href="#projects" role="menuitem">Projects</a>
             </li>
 
-            <li>
-              <a className="menu-item" href="#work-exp">Experience</a>
+            <li role="none">
+              <a className="menu-item" href="#work-exp" role="menuitem">Experience</a>
             </li>
 
-            <li>
-              <a className="menu-item" href="#contact">Contact</a>
+            <li role="none">
+              <a className="menu-item" href="#contact" role="menuitem">Contact</a>
             </li>
 
-            <a className="text-decoration-none" target="_blank" rel="noreferrer noopener" href="https://docs.google.com/document/d/e/2PACX-1vT4HRmeOmilEDtiuiQHmU_o9lJrp4kDKlx-2VWOBklzRMeq9sN3HVjcDPeIaZNtomYkMOyEPonUkeqN/pub">
-              <button className="contact_btn" onClick={() => {}}>Hire Me</button>
+            <a className="text-decoration-none" href="./CV_Carmelo_la_mantia_2026.pdf" download="CV_Carmelo_La_Mantia.pdf" aria-label="Scarica il mio CV in PDF">
+              <button className="contact_btn">Hire Me</button>
             </a>
           </ul>
             
-            <button className='menu-btn' onClick={toggleMenu}>
+            <button 
+              className='menu-btn' 
+              onClick={toggleMenu}
+              aria-label={openMenu ? "Chiudi menu" : "Apri menu"}
+              aria-expanded={openMenu}
+              aria-controls="mobile-menu"
+            >
               <span className={'material-symbols-outlined'}
                 style={{fontSize:'1.8rem'}} >
                 {openMenu ? <BsX /> : <BsFilterRight />}

@@ -5,18 +5,28 @@ import { BsGithub, BsBoxArrowUpRight } from "react-icons/bs";
 export default function ProjectCard({ project }) {
   return (
     <>
-      <div className="project-card">
+      <article className="project-card">
         <div className="project-image">
-          <img src={project.image} alt={project.title} />
+          <img src={project.image} alt={`Screenshot del progetto ${project.title}`} loading="lazy" />
           <div className="project-overlay">
             <div className="project-links">
               {project.github && (
-                <a href={project.github} target="_blank" rel="noopener noreferrer" title="GitHub">
+                <a 
+                  href={project.github} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  aria-label={`Vedi codice sorgente di ${project.title} su GitHub`}
+                >
                   <BsGithub />
                 </a>
               )}
               {project.demo && (
-                <a href={project.demo} target="_blank" rel="noopener noreferrer" title="Live Demo">
+                <a 
+                  href={project.demo} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  aria-label={`Vedi demo live di ${project.title}`}
+                >
                   <BsBoxArrowUpRight />
                 </a>
               )}
@@ -34,7 +44,7 @@ export default function ProjectCard({ project }) {
             ))}
           </div>
         </div>
-      </div>
+      </article>
     </>
   );
 }

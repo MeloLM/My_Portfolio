@@ -30,6 +30,38 @@ body{
   --purple-5: #9D4EDD;
 }
 
+/* ACCESSIBILITY - Focus States */
+*:focus-visible {
+  outline: 2px solid var(--main-color);
+  outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--main-color);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Skip to content link (hidden until focused) */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--main-color);
+  color: #060417;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  z-index: 9999;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.skip-link:focus {
+  top: 10px;
+}
+
 /* CUSTOM SCROLLBAR */
  
 /* width */

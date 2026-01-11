@@ -9,10 +9,10 @@ export default function ContactCard ({iconUrl, text, linkText}) {
       
       <div className="contact-card">
         <div className="icon">
-          <img src={iconUrl} alt={text} className="rounded-3 w-100"/>
+          <img src={iconUrl} alt="" className="rounded-3 w-100" loading="lazy" aria-hidden="true" />
         </div>
 
-        <a href={linkText} target="_blank" rel="noopener noreferrer">{text}</a>
+        <a href={linkText} target="_blank" rel="noopener noreferrer" aria-label={text}>{text}</a>
       </div>
 
     </>

@@ -131,23 +131,27 @@ Footer.js       → Footer.css           .footer
 
 ## ASSETS_PATH
 ```
-public/assets/
-├── icon/
-│   ├── Melo_icon.ico      [favicon]
-│   ├── frontEnd.png       [skill-card]
-│   ├── backEnd.png        [skill-card]
-│   ├── tools.png          [skill-card]
-│   ├── soft_skill.png     [skill-card]
-│   ├── react.png
-│   ├── github.png
-│   ├── php.png
-│   ├── lara.webp
-│   ├── laravel.jpg
-│   ├── gmail_icon.png
-│   └── WA_icon.png
-│
-└── image/
-    └── profile.jpg        [hero]
+public/
+├── CV_Carmelo_la_mantia_2026.pdf  [downloadable CV]
+├── sitemap.xml                     [SEO sitemap]
+├── robots.txt                      [crawler rules]
+├── assets/
+│   ├── icon/
+│   │   ├── Melo_icon.ico      [favicon]
+│   │   ├── frontEnd.png       [skill-card]
+│   │   ├── backEnd.png        [skill-card]
+│   │   ├── tools.png          [skill-card]
+│   │   ├── soft_skill.png     [skill-card]
+│   │   ├── react.png
+│   │   ├── github.png
+│   │   ├── php.png
+│   │   ├── lara.webp
+│   │   ├── laravel.jpg
+│   │   ├── gmail_icon.png
+│   │   └── WA_icon.png
+│   │
+│   └── image/
+│       └── profile.jpg        [hero]
 ```
 
 ---
@@ -225,5 +229,8 @@ icons: react-icons (Bs* exports)
 [x] import { React } unnecessary → FIXED (11/01/2026)
 [x] slideToShow typo in WorkExp.js → FIXED (11/01/2026)
 [x] Webapack typo in data.js → FIXED (11/01/2026)
-[ ] @emailjs/browser dep unused → remove or implement
+[x] @emailjs/browser dep unused → REMOVED (11/01/2026)
+[x] Missing SEO (canonical, sitemap, JSON-LD) → ADDED (11/01/2026)
+[x] Missing accessibility (aria-labels, focus) → ADDED (11/01/2026)
+[ ] Images not WebP format → convert for performance
 ```
