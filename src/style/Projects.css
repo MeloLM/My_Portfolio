@@ -1,0 +1,35 @@
+.projects-box {
+  padding: 4rem 0;
+}
+
+.projects-box h5 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.projects-subtitle {
+  text-align: center;
+  color: #a892fe;
+  margin-bottom: 3rem;
+  font-size: 1rem;
+}
+
+.projects-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* MEDIA QUERY */
+@media (max-width: 768px) {
+  .projects-box h5 {
+    font-size: 1.5rem;
+  }
+  
+  .projects-content {
+    gap: 1.5rem;
+  }
+}

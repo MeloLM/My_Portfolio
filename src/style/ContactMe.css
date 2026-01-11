@@ -1,0 +1,28 @@
+.contact-box {
+  margin: 4rem 0;
+  position: relative;
+}
+
+.contact-box h4 {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 3rem;
+}
+
+.contact-content {
+  display: flex;
+  gap: 3rem;
+}
+
+
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column-reverse;
+  }
+
+  .contact-box h4 {
+    font-size: 1.3rem;
+    margin-bottom: 0rem;
+  }
+  
+}

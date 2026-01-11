@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+*{
+  font-family:  'Poppins', sans-serif;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  color: white;
+  background-color: #060417;
+}
+
+:root{
+ --main-color: #a993fe;
+ --sec-color: #7e61e7;
+}
+
+:root{
+  --orange-1: #FF6D00;
+  --orange-2: #FF7900;
+  --orange-3: #FF8500;
+  --orange-4: #FF9100;
+  --orange-5: #FF9E00;
+
+  --purple-1: #240046;
+  --purple-2: #3C096C;
+  --purple-3: #5A189A;
+  --purple-4: #7B2CBF;
+  --purple-5: #9D4EDD;
+}
+
+/* CUSTOM SCROLLBAR */
+ 
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(128, 128, 128, 0.326); 
+  border-radius: 2px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--main-color); 
+  border-radius: 3px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sec-color); 
+}
+
+.nav-wrapper{
+  background: rgba(0, 0 , 0, 0.1);
+  padding: 0.5rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(50px);
+}
+
+.logo_1{
+  width: 7rem;
+  height: auto;
+}
+
+.nav-content{
+  max-width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  margin: 0 auto;
+}
+
+.nav-content ul{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.nav-content li{
+  margin: 0 1.5rem;
+}
+
+.menu-item{
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  position: relative;
+  cursor: pointer;
+}
+
+.menu-item::before{
+  content: " ";
+  width: 2rem;
+  height: 0.2rem;
+  background: linear-gradient(90deg, #a993fe 0%, #7e61e7 100%);
+  border-radius: 0.5rem;
+  position: absolute;
+  bottom: -0.6rem;
+  opacity: 0;
+  transform: translateX(-1.5rem);
+  transition: all 0.3s ease;
+}
+
+.menu-item:hover::before {
+  width: 100%;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* CONTACT-BUTTON */
+.contact_btn{
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: linear-gradient(90deg, #a993fe 0%, #7e61e7 100%);
+  padding: 0.6rem 2rem;
+  border: none;
+  outline: 1.5px solid transparent;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  transition: all 0.3 ease;
+}
+
+.contact_btn:hover {
+  color: #a993fe;
+  background: black;
+  outline: 1.5px solid #a993fe;
+}
+
+/* MENU-TOGGLE-BUTTON */
+.menu-btn{
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 0.4rem;
+  color: white;
+  background: linear-gradient(90deg, var(--main-color) -0.13%, var(--sec-color) 99.87%);
+  line-height: 0;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  display: none;
+}
+
+.menu-btn:hover{
+  color: var(--main-color);
+  background: #000;
+  border: 1px solid var(--main-color);
+}
+
+/* MEDIA QUERY FOR BUTTON */
+@media(max-width: 425px) {
+	.logo_1{
+		width: 6.5rem;
+		height: auto;
+	}
+}
+
+@media(max-width: 769px) {
+	.menu-btn{
+		display: block;
+    margin-left: 1rem;
+	}
+
+	.nav-content ul{
+		display: none;
+	}
+
+  .nav-content h1 {
+    margin-left: -3rem;
+  }
+}
+
+@media(max-width: 1325px) {
+	.nav-wrapper{
+		padding: 0 2rem;
+	}
+}

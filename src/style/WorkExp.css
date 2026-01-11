@@ -1,0 +1,72 @@
+.exp-box {
+  margin: 4rem 0;
+  position: relative;
+}
+
+.exp-box h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+}
+
+.left-arrow, 
+.right-arrow {
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6751b9;
+  border-radius: 0.65rem;
+  border: 1.5px solid #6751b9;
+  background: #130f2a;
+  position: absolute;
+  top: 55%;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.left-arrow span,
+.right-arrow span {
+  font-size: 2rem;
+  font-weight: 500;
+  padding-bottom:  0.2rem;
+}
+
+.left-arrow {
+  left: -2rem;
+}
+
+.right-arrow {
+  right: -2rem;
+}
+
+@media (max-width: 1025px) {
+  
+  .left-arrow {
+    left: 0;
+  }
+
+  .right-arrow {
+    right: 0;
+  }
+
+}
+
+
+@media (max-width: 768px) {
+  
+  .exp-box h3 {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+  }
+
+  .left-arrow {
+    left: -1rem;
+  }
+
+  .right-arrow {
+    right: -1rem;
+  }
+
+}
