@@ -71,8 +71,17 @@ nella vecchia codebase.
 - [ ] Decidere l'immagine della card "Portfolio v1": oggi mostra `portfolio-v1.webp`,
       coerente con il titolo del progetto. Se in vetrina deve andare la V2, vanno
       cambiati insieme titolo, slug e immagine — non la sola immagine
-- [ ] Ruotare le credenziali EmailJS: quelle vecchie sono nella storia di git
-- [ ] Attivare il domain allowlist su EmailJS (Account → Security)
+- [x] Ruotare le credenziali EmailJS. Public key rigenerata il 20 settembre 2026,
+      variabili aggiornate su Vercel e redeploy eseguito: la tripla finita nei log
+      della V1 non è più utilizzabile
+- [x] ~~Attivare il domain allowlist su EmailJS~~ — **scartato consapevolmente**: la
+      restrizione per dominio richiede un piano a pagamento. Su un portfolio
+      personale con quota di 200 email al mese il rischio di abuso è accettato.
+      Vedi `log/log_007.md`, Ciclo E
+- [ ] Rendere cliccabile il `mailto:` nel messaggio di errore di invio. Oggi il
+      banner con il link compare solo quando mancano le variabili d'ambiente; se
+      l'invio fallisce per quota esaurita il visitatore legge un testo che invita a
+      scrivere via email ma senza link. Una riga in `Contact.tsx`
 
 ### Debito residuo
 - [ ] Completare i test sui componenti. Coperti: `Button`, `Field`, `Badge`, `Hero`

@@ -66,9 +66,17 @@ export const EMAILJS_CONFIG = {
   publicKey: process.env.NEXT_PUBLIC_EMAILJS_KEY,
 } as const;
 
-/** True solo se tutte e tre le variabili sono presenti e non vuote. */
+/**
+ * True solo se tutte e tre le variabili sono presenti e non vuote.
+ *
+ * Il `trim()` non è cosmetico: una variabile valorizzata con soli spazi è truthy,
+ * e senza questo controllo il form si presenterebbe come funzionante per poi
+ * fallire all'invio — esattamente il "fingere di funzionare" che la V2 evita.
+ */
 export const isEmailJsConfigured: boolean = Boolean(
-  EMAILJS_CONFIG.serviceId && EMAILJS_CONFIG.templateId && EMAILJS_CONFIG.publicKey
+  EMAILJS_CONFIG.serviceId?.trim() &&
+    EMAILJS_CONFIG.templateId?.trim() &&
+    EMAILJS_CONFIG.publicKey?.trim()
 );
 
 // ============================================================================
