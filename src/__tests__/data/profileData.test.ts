@@ -87,6 +87,14 @@ describe('personalInfo', () => {
     expect(assetExists(personalInfo.cvPath)).toBe(true);
   });
 
+  it('tiene `city` e `location` d accordo fra loro', () => {
+    // `city` alimenta i dati strutturati, `location` il testo in pagina: se
+    // divergono, il JSON-LD dichiara una città diversa da quella che il
+    // visitatore legge. È esattamente ciò che è successo con "Agrigento".
+    expect(personalInfo.city.trim().length).toBeGreaterThan(0);
+    expect(personalInfo.location).toContain(personalInfo.city);
+  });
+
   it('usa profili social con URL assoluti', () => {
     for (const url of [personalInfo.github, personalInfo.linkedin, personalInfo.instagram]) {
       expect(url).toMatch(/^https:\/\//);

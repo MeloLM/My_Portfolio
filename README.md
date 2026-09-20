@@ -2,7 +2,7 @@
 
 # 🚀 Carmelo La Mantia — Portfolio
 
-**Jr Full Stack Developer** · Agrigento, Sicilia
+**Jr Full Stack Developer** · Canicattì (AG), Sicilia
 
 Portfolio personale costruito in **Next.js 14 · TypeScript strict · Tailwind CSS**
 

@@ -59,6 +59,15 @@ export interface PersonalInfo {
   readonly tagline: string;
   readonly location: string;
   readonly birthDate: string;
+  /**
+   * Comune di residenza isolato, senza provincia né regione.
+   *
+   * Esiste separato da `location` perché i dati strutturati vogliono la sola
+   * città in `addressLocality`, mentre `location` è una stringa pensata per
+   * essere letta in pagina. Tenerli distinti evita che il JSON-LD dichiari una
+   * località diversa da quella mostrata.
+   */
+  readonly city: string;
   readonly phone: string;
   readonly email: string;
   readonly linkedin: string;
@@ -164,7 +173,8 @@ export const personalInfo: PersonalInfo = {
   name: 'Carmelo La Mantia',
   role: 'Jr Full Stack Developer',
   tagline: 'AI-Augmented Development · Next.js · Laravel',
-  location: 'Canicatti AG, Sicilia',
+  city: 'Canicattì',
+  location: 'Canicattì (AG), Sicilia',
   birthDate: '12/09/2000',
   phone: '+39 3510845851',
   email: 'carmelo.la.mantia00@gmail.com',

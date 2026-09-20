@@ -39,6 +39,9 @@ export const metadata: Metadata = {
     'Laravel',
     'PHP',
     'Portfolio',
+    // Comune dal data layer, provincia e regione a seguire: chi cerca per
+    // provincia trova comunque, senza che la keyword contraddica la pagina.
+    personalInfo.city,
     'Agrigento',
     'Sicilia',
   ],
@@ -110,7 +113,9 @@ const personSchema = {
   email: `mailto:${personalInfo.email}`,
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Agrigento',
+    // Letto dal data layer: scritto a mano dichiarava una città diversa da
+    // quella mostrata in pagina dopo ogni cambio di `personalInfo`.
+    addressLocality: personalInfo.city,
     addressRegion: 'Sicilia',
     addressCountry: 'IT',
   },

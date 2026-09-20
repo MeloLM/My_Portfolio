@@ -87,6 +87,10 @@ nella vecchia codebase.
 - [ ] Sostituire il numero WhatsApp segnaposto (`wa.me/393000000000`) con quello
       reale. Da fare in locale prima del deploy: non va committato in chiaro su un
       repository pubblico
+- [x] Allineare i dati di località: nuovo campo `personalInfo.city` agganciato a
+      `addressLocality` del JSON-LD e alle keyword SEO, che prima dichiaravano
+      "Agrigento" scritto a mano. Accento di "Canicattì" uniformato e README
+      allineato. Un test impedisce a `city` e `location` di divergere di nuovo
 
 ### Debito residuo
 - [ ] Completare i test sui componenti. Coperti: `Button`, `Field`, `Badge`, `Hero`,
