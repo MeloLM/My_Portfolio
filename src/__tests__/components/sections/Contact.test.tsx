@@ -17,10 +17,10 @@
  * testata è quella reale.
  */
 
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { personalInfo } from '../../../data/profileData';
+import { personalInfo, socialLinks } from '../../../data/profileData';
 
 const state = vi.hoisted(() => ({ configured: false }));
 const emailjsSend = vi.hoisted(() => vi.fn());
@@ -48,6 +48,13 @@ vi.mock('../../../constants', async (importOriginal) => {
 // Import statico: Vitest issa i `vi.mock` sopra gli import, quindi `Contact`
 // riceve comunque la versione pilotata delle costanti.
 import { Contact } from '../../../components/sections/Contact';
+
+/** Compila i tre campi obbligatori con valori che superano la validazione reale. */
+async function compilaFormValido(user: ReturnType<typeof userEvent.setup>) {
+  await user.type(screen.getByLabelText('Nome'), 'Mario');
+  await user.type(screen.getByLabelText('Email'), 'mario.rossi@example.com');
+  await user.type(screen.getByLabelText('Messaggio'), 'Un messaggio abbastanza lungo.');
+}
 
 beforeEach(() => {
   state.configured = false;
@@ -170,5 +177,127 @@ describe('Contact — credenziali presenti', () => {
 
     expect(emailjsSend).not.toHaveBeenCalled();
     expect(await screen.findByText(/Controlla i campi evidenziati/i)).toBeVisible();
+  });
+
+  it('non offre il recapito diretto quando l errore è di validazione', async () => {
+    // Un campo sbagliato si corregge nel form: proporre l'email sarebbe un invito
+    // ad abbandonare il modulo per un problema risolvibile in due secondi.
+    const user = userEvent.setup();
+
+    render(<Contact />);
+    await user.click(screen.getByRole('button', { name: /Invia messaggio/i }));
+    await screen.findByText(/Controlla i campi evidenziati/i);
+
+    expect(within(screen.getByRole('status')).queryByRole('link')).toBeNull();
+  });
+
+  it('non offre il recapito diretto dopo un invio riuscito', async () => {
+    const user = userEvent.setup();
+
+    render(<Contact />);
+    await compilaFormValido(user);
+    await user.click(screen.getByRole('button', { name: /Invia messaggio/i }));
+    await screen.findByText(/Messaggio inviato/i);
+
+    expect(within(screen.getByRole('status')).queryByRole('link')).toBeNull();
+  });
+});
+
+describe('Contact — invio fallito', () => {
+  beforeEach(() => {
+    state.configured = true;
+    emailjsSend.mockRejectedValue(new Error('quota exceeded'));
+  });
+
+  it('dichiara il fallimento senza far crashare la pagina', async () => {
+    const user = userEvent.setup();
+
+    render(<Contact />);
+    await compilaFormValido(user);
+    await user.click(screen.getByRole('button', { name: /Invia messaggio/i }));
+
+    expect(await screen.findByText(/Invio non riuscito/i)).toBeVisible();
+  });
+
+  it('rende il recapito diretto un link cliccabile dentro il messaggio d errore', async () => {
+    // È lo scenario della quota esaurita: il form non funziona e l'unica via
+    // d'uscita utile è scrivere via email, quindi deve bastare un click.
+    const user = userEvent.setup();
+
+    render(<Contact />);
+    await compilaFormValido(user);
+    await user.click(screen.getByRole('button', { name: /Invia messaggio/i }));
+    await screen.findByText(/Invio non riuscito/i);
+
+    const link = within(screen.getByRole('status')).getByRole('link');
+
+    expect(link).toHaveAttribute('href', `mailto:${personalInfo.email}`);
+    expect(link).toHaveTextContent(personalInfo.email);
+  });
+
+  it('annuncia il messaggio agli screen reader tramite la live region', async () => {
+    const user = userEvent.setup();
+
+    render(<Contact />);
+    await compilaFormValido(user);
+    await user.click(screen.getByRole('button', { name: /Invia messaggio/i }));
+    await screen.findByText(/Invio non riuscito/i);
+
+    const status = screen.getByRole('status');
+
+    expect(status).toHaveAttribute('aria-live', 'polite');
+    expect(status).toHaveTextContent(personalInfo.email);
+  });
+
+  it('lascia il form compilato, così il messaggio non va perso', async () => {
+    const user = userEvent.setup();
+
+    render(<Contact />);
+    await compilaFormValido(user);
+    await user.click(screen.getByRole('button', { name: /Invia messaggio/i }));
+    await screen.findByText(/Invio non riuscito/i);
+
+    expect(screen.getByLabelText('Nome')).toHaveValue('Mario');
+    expect(screen.getByLabelText('Messaggio')).toHaveValue('Un messaggio abbastanza lungo.');
+  });
+});
+
+describe('Contact — canali social', () => {
+  /** I link social stanno fuori dal form: non dipendono dalla configurazione. */
+  function linkSocial() {
+    return socialLinks.map(({ label }) => screen.getByRole('link', { name: label }));
+  }
+
+  it('renderizza un link per ogni canale del data layer', () => {
+    // Prima della V2.1 erano due link scritti a mano: togliere un canale da
+    // `profileData` non lo avrebbe rimosso da qui.
+    render(<Contact />);
+
+    expect(linkSocial()).toHaveLength(socialLinks.length);
+  });
+
+  it('include WhatsApp fra i canali', () => {
+    render(<Contact />);
+
+    const whatsapp = socialLinks.find((link) => link.platform === 'whatsapp');
+
+    expect(screen.getByRole('link', { name: 'WhatsApp' })).toHaveAttribute('href', whatsapp?.href);
+  });
+
+  it('prende href e aria-label dalla fonte unica', () => {
+    render(<Contact />);
+
+    for (const { label, href } of socialLinks) {
+      expect(screen.getByRole('link', { name: label })).toHaveAttribute('href', href);
+    }
+  });
+
+  it('apre ogni canale in sicurezza', () => {
+    render(<Contact />);
+
+    for (const link of linkSocial()) {
+      expect(link).toHaveAttribute('target', '_blank');
+      expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+    }
   });
 });

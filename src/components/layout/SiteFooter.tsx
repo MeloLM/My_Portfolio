@@ -5,14 +5,8 @@
 
 import Link from 'next/link';
 import { NAV_ITEMS } from '../../constants';
-import { personalInfo } from '../../data/profileData';
-import { GithubIcon, InstagramIcon, LinkedinIcon } from '../ui/SocialIcons';
-
-const socials = [
-  { label: 'GitHub', href: personalInfo.github, Icon: GithubIcon },
-  { label: 'LinkedIn', href: personalInfo.linkedin, Icon: LinkedinIcon },
-  { label: 'Instagram', href: personalInfo.instagram, Icon: InstagramIcon },
-];
+import { personalInfo, socialLinks } from '../../data/profileData';
+import { socialIcons } from '../ui/SocialIcons';
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -38,18 +32,22 @@ export function SiteFooter() {
         </nav>
 
         <div className="flex items-center gap-4">
-          {socials.map(({ label, href, Icon }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={label}
-              className="text-muted-foreground transition-colors hover:text-foreground"
-            >
-              <Icon className="size-4" />
-            </a>
-          ))}
+          {socialLinks.map(({ platform, label, href }) => {
+            const Icon = socialIcons[platform];
+
+            return (
+              <a
+                key={platform}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <Icon className="size-4" />
+              </a>
+            );
+          })}
         </div>
       </div>
 

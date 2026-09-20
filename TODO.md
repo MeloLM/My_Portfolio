@@ -78,16 +78,22 @@ nella vecchia codebase.
       restrizione per dominio richiede un piano a pagamento. Su un portfolio
       personale con quota di 200 email al mese il rischio di abuso è accettato.
       Vedi `log/log_007.md`, Ciclo E
-- [ ] Rendere cliccabile il `mailto:` nel messaggio di errore di invio. Oggi il
-      banner con il link compare solo quando mancano le variabili d'ambiente; se
-      l'invio fallisce per quota esaurita il visitatore legge un testo che invita a
-      scrivere via email ma senza link. Una riga in `Contact.tsx`
+- [x] Rendere cliccabile il `mailto:` nel messaggio di errore di invio. Risolto con
+      `EmailErrorKind` in `useEmail`: il link compare solo su `'send'`, non sugli
+      errori di validazione, che si correggono nel form
+- [x] WhatsApp come canale di contatto: voce in `socialLinks`, pulsante flottante
+      `WhatsAppFloat` nel root layout, propagazione in Hero, Footer e Contact
+- [x] Copy delle card progetti da "Case study" a "Info", presidiata da test
+- [ ] Sostituire il numero WhatsApp segnaposto (`wa.me/393000000000`) con quello
+      reale. Da fare in locale prima del deploy: non va committato in chiaro su un
+      repository pubblico
 
 ### Debito residuo
-- [ ] Completare i test sui componenti. Coperti: `Button`, `Field`, `Badge`, `Hero`
-      (suite da 23 a 108 test). Restano scoperti `SectionHeading`, `SocialIcons` e
-      `Starfield` — quest'ultimo solo indirettamente via `Hero.test.tsx`: il loop e
-      le tre condizioni di stop richiederebbero un mock del contesto 2D
+- [ ] Completare i test sui componenti. Coperti: `Button`, `Field`, `Badge`, `Hero`,
+      `Contact`, `Projects`, `WhatsAppFloat` (suite da 23 a 168 test). Restano
+      scoperti `SectionHeading`, `SocialIcons` e `Starfield` — quest'ultimo solo
+      indirettamente via `Hero.test.tsx`: il loop e le tre condizioni di stop
+      richiederebbero un mock del contesto 2D
 - [ ] Valutare se `Field` debba cablare da sé `aria-describedby` e `aria-invalid`
       sul figlio invece di lasciarlo a ogni chiamante: oggi `Contact.tsx` riscrive
       l'id a mano come stringa letterale, e nessun type-check sorveglia quel legame

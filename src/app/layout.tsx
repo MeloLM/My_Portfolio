@@ -9,6 +9,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { SITE_URL } from '../constants';
 import { personalInfo, summary, skills, projects } from '../data/profileData';
+import { WhatsAppFloat } from '../components/layout/WhatsAppFloat';
 import './globals.css';
 
 // Font unico, self-hosted da next/font: zero richieste esterne a runtime.
@@ -145,7 +146,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body className="min-h-screen bg-background font-sans text-foreground">{children}</body>
+      <body className="min-h-screen bg-background font-sans text-foreground">
+        {children}
+        {/* Fuori da `children` così resta visibile su ogni rotta, landing e pagine interne. */}
+        <WhatsAppFloat />
+      </body>
     </html>
   );
 }

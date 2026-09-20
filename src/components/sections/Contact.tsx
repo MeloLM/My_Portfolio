@@ -11,12 +11,12 @@
 
 import { useState, type FormEvent } from 'react';
 import { AlertCircle, CheckCircle2, Loader2, Mail, MapPin, Phone, Send } from 'lucide-react';
-import { personalInfo } from '../../data/profileData';
+import { personalInfo, socialLinks } from '../../data/profileData';
 import { useEmail, type EmailFormData } from '../../hooks/useEmail';
 import { Button } from '../ui/Button';
 import { Field, Input, Textarea } from '../ui/Field';
 import { SectionHeading } from '../ui/SectionHeading';
-import { GithubIcon, LinkedinIcon } from '../ui/SocialIcons';
+import { socialIcons } from '../ui/SocialIcons';
 
 const emptyForm: EmailFormData = {
   firstName: '',
@@ -28,7 +28,7 @@ const emptyForm: EmailFormData = {
 
 export function Contact() {
   const [form, setForm] = useState<EmailFormData>(emptyForm);
-  const { status, feedback, errors, sendEmail, isConfigured } = useEmail();
+  const { status, feedback, errors, errorKind, sendEmail, isConfigured } = useEmail();
 
   const isSending = status === 'sending';
 
@@ -84,25 +84,28 @@ export function Contact() {
               </li>
             </ul>
 
+            {/*
+              Itera la fonte unica come Hero e SiteFooter: aggiungere o togliere un
+              canale in `profileData` si riflette qui senza toccare questo file.
+              Prima della V2.1 erano due link scritti a mano, GitHub e LinkedIn.
+            */}
             <div className="mt-8 flex items-center gap-3">
-              <a
-                href={personalInfo.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="flex size-10 items-center justify-center rounded-lg border border-border bg-card/40 text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <GithubIcon className="size-4" />
-              </a>
-              <a
-                href={personalInfo.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="flex size-10 items-center justify-center rounded-lg border border-border bg-card/40 text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <LinkedinIcon className="size-4" />
-              </a>
+              {socialLinks.map(({ platform, label, href }) => {
+                const Icon = socialIcons[platform];
+
+                return (
+                  <a
+                    key={platform}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="flex size-10 items-center justify-center rounded-lg border border-border bg-card/40 text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    <Icon className="size-4" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
@@ -225,7 +228,21 @@ export function Contact() {
               >
                 {status === 'success' && <CheckCircle2 className="size-4" aria-hidden="true" />}
                 {status === 'error' && <AlertCircle className="size-4" aria-hidden="true" />}
-                {feedback}
+                <span>
+                  {feedback}
+                  {/*
+                    Solo su invio fallito: un errore di validazione si corregge nel
+                    form, mentre qui il recapito diretto è l'unica via d'uscita utile.
+                  */}
+                  {errorKind === 'send' && (
+                    <>
+                      {' '}
+                      <a href={`mailto:${personalInfo.email}`} className="underline">
+                        {personalInfo.email}
+                      </a>
+                    </>
+                  )}
+                </span>
               </p>
             </div>
           </form>

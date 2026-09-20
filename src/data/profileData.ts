@@ -35,6 +35,23 @@ export type FallbackIcon = 'Layers' | 'Database' | 'Cloud' | 'Sparkles';
 /** Destinazione del link di un progetto: demo pubblica o repository. */
 export type ProjectLinkType = 'live' | 'repo';
 
+/**
+ * Canali social esposti nella UI.
+ *
+ * Union chiusa come `FallbackIcon`: chi renderizza questi link mappa
+ * esaustivamente ogni valore su un'icona, quindi aggiungerne uno qui costringe il
+ * compilatore a segnalare la mappa incompleta invece di lasciare un buco a runtime.
+ */
+export type SocialPlatform = 'github' | 'linkedin' | 'instagram' | 'whatsapp';
+
+/** Voce social: la UI non conosce gli URL, li legge da qui. */
+export interface SocialLink {
+  readonly platform: SocialPlatform;
+  /** Usata come `aria-label`: è l'unico testo che raggiunge gli screen reader. */
+  readonly label: string;
+  readonly href: string;
+}
+
 /** Dati anagrafici e recapiti. */
 export interface PersonalInfo {
   readonly name: string;
@@ -147,7 +164,7 @@ export const personalInfo: PersonalInfo = {
   name: 'Carmelo La Mantia',
   role: 'Jr Full Stack Developer',
   tagline: 'AI-Augmented Development · Next.js · Laravel',
-  location: 'Agrigento, Sicilia',
+  location: 'Canicatti AG, Sicilia',
   birthDate: '12/09/2000',
   phone: '+39 3510845851',
   email: 'carmelo.la.mantia00@gmail.com',
@@ -156,6 +173,40 @@ export const personalInfo: PersonalInfo = {
   instagram: 'https://www.instagram.com/carmelo_coding/',
   cvPath: '/CV_Carmelo_la_mantia_2026.pdf',
 };
+
+/**
+ * Canali social, in ordine di rilevanza professionale.
+ *
+ * Fonte unica: prima della V2.1 Hero e SiteFooter dichiaravano ciascuno il proprio
+ * array identico, e aggiungere un canale significava ricordarsi di farlo in due
+ * punti. Ora entrambi iterano questo.
+ *
+ * ⚠️ Il numero WhatsApp è un SEGNAPOSTO e va sostituito con quello reale prima di
+ * pubblicare: il link porta a una chat inesistente. Formato `wa.me`: prefisso
+ * internazionale senza `+` né spazi, messaggio precompilato in `?text=`.
+ */
+export const socialLinks: readonly SocialLink[] = [
+  {
+    platform: 'github',
+    label: 'GitHub',
+    href: personalInfo.github,
+  },
+  {
+    platform: 'linkedin',
+    label: 'LinkedIn',
+    href: personalInfo.linkedin,
+  },
+  {
+    platform: 'instagram',
+    label: 'Instagram',
+    href: personalInfo.instagram,
+  },
+  {
+    platform: 'whatsapp',
+    label: 'WhatsApp',
+    href: 'https://wa.me/393000000000?text=Ciao%20Carmelo%20ti%20contatto%20per%20delle%20info',
+  },
+];
 
 export const summary =
   'Jr Full Stack Developer specializzato nello stack Next.js/TypeScript e PHP/Laravel. ' +

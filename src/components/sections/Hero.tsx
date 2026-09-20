@@ -12,16 +12,10 @@
  */
 
 import { ArrowRight, Download, MapPin } from 'lucide-react';
-import { personalInfo, summary } from '../../data/profileData';
+import { personalInfo, socialLinks, summary } from '../../data/profileData';
 import { ButtonLink } from '../ui/Button';
-import { GithubIcon, InstagramIcon, LinkedinIcon } from '../ui/SocialIcons';
+import { socialIcons } from '../ui/SocialIcons';
 import { Starfield } from '../ui/Starfield';
-
-const socials = [
-  { label: 'GitHub', href: personalInfo.github, Icon: GithubIcon },
-  { label: 'LinkedIn', href: personalInfo.linkedin, Icon: LinkedinIcon },
-  { label: 'Instagram', href: personalInfo.instagram, Icon: InstagramIcon },
-];
 
 export function Hero() {
   return (
@@ -67,18 +61,22 @@ export function Hero() {
           </div>
 
           <div className="mt-10 flex items-center gap-5">
-            {socials.map(({ label, href, Icon }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="rounded-md text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <Icon className="size-5" />
-              </a>
-            ))}
+            {socialLinks.map(({ platform, label, href }) => {
+              const Icon = socialIcons[platform];
+
+              return (
+                <a
+                  key={platform}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="rounded-md text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  <Icon className="size-5" />
+                </a>
+              );
+            })}
             <span aria-hidden="true" className="h-4 w-px bg-border" />
             <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
               <MapPin className="size-4" aria-hidden="true" />

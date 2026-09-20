@@ -63,7 +63,7 @@ export function Projects() {
                     href={`/projects/${project.slug}`}
                     className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-primary"
                   >
-                    Case study
+                    Info
                     <ArrowUpRight className="size-4" aria-hidden="true" />
                   </Link>
 

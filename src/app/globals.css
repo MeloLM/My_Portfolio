@@ -34,6 +34,16 @@
     --input: 217 33% 17%;
     --ring: 217 91% 60%;
 
+    /*
+     * Verde di marca WhatsApp (#25D366) come canali HSL, così il pulsante
+     * flottante non deve scrivere un esadecimale nel markup.
+     * Il foreground è Slate 950 e non bianco: su questo verde il bianco dà un
+     * contrasto di 2:1, sotto il minimo di 3:1 richiesto per le icone
+     * (WCAG 1.4.11). Con Slate 950 il rapporto sale a 10.6:1.
+     */
+    --whatsapp: 142 70% 49%;
+    --whatsapp-foreground: 222 84% 5%;
+
     --radius: 0.75rem;
 
     color-scheme: dark;
