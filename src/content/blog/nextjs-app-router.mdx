@@ -1,0 +1,56 @@
+---
+title: "Next.js 14 App Router: quello che ho imparato"
+date: "2026-04-10"
+description: "Migrare da Create React App a Next.js 14 App Router: le differenze chiave, le insidie e i vantaggi concreti."
+tags: ["Next.js", "React", "SSR", "Performance"]
+---
+
+# Next.js 14 App Router: quello che ho imparato
+
+La migrazione da Create React App (CRA) a Next.js 14 con App Router ha trasformato completamente l'architettura del mio portfolio.
+
+## Il problema con CRA
+
+CRA genera una SPA (Single Page Application) — tutto il JavaScript viene caricato al primo accesso e Google vede solo una pagina vuota finché React non si idrata.
+
+**Conseguenze:**
+- SEO quasi inesistente
+- First Contentful Paint lento su connessioni lente
+- Nessun controllo sulle performance di bundle
+
+## App Router: la svolta
+
+Con Next.js 14 App Router, ogni componente è un **Server Component** per default:
+
+```typescript
+// app/page.tsx — Server Component (zero JS nel bundle client!)
+export default function Page() {
+  return <HomePage />; // HomePage è Client Component
+}
+
+// Metadata server-side — Google la vede subito
+export const metadata: Metadata = {
+  title: 'Carmelo La Mantia | Full Stack Developer',
+  description: '...',
+};
+```
+
+## Lazy Loading con Suspense
+
+Il lazy loading con Suspense permette di caricare le sezioni solo quando necessario:
+
+```typescript
+const Skills = lazy(() => import('./sections/Skills'));
+
+<Suspense fallback={<SkeletonSection />}>
+  <Skills />
+</Suspense>
+```
+
+## Risultati
+
+- **Time to First Byte < 200ms** grazie al rendering server-side
+- **Core Web Vitals** migliorati significativamente
+- **SEO** con metadata API e JSON-LD strutturato
+
+L'investimento di tempo per la migrazione è stato ripagato immediatamente in qualità del prodotto finale.

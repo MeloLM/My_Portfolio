@@ -1,0 +1,54 @@
+---
+title: "Da JavaScript a TypeScript: la mia esperienza"
+date: "2026-04-20"
+description: "Come ho migrato il mio portfolio da JavaScript puro a TypeScript, cosa ho imparato e perché vale la pena."
+tags: ["TypeScript", "React", "Next.js", "Best Practices"]
+---
+
+# Da JavaScript a TypeScript: la mia esperienza
+
+Migrare un progetto da JavaScript puro a TypeScript è stata una delle decisioni migliori che ho preso per questo portfolio.
+
+## Perché TypeScript?
+
+Nel 2026, TypeScript non è più un optional — è lo standard industriale. Ogni job listing per ruoli Full Stack o Frontend menziona TypeScript come requisito fondamentale.
+
+**I benefici concreti che ho trovato:**
+
+1. **Errori catturati in anticipo** — il compiler mi avvisa prima che il browser lo faccia
+2. **Autocompletamento migliorato** — VS Code suggerisce props corretti grazie alle interfacce
+3. **Refactoring sicuro** — rinominare un tipo aggiorna tutto il codebase
+4. **Documentazione vivente** — le interfacce descrivono la forma dei dati
+
+## Il processo di migrazione
+
+Ho migrato file per file, iniziando dagli hooks più semplici:
+
+```typescript
+// Prima (JavaScript)
+const useScroll = (threshold) => {
+  const [scrolled, setScrolled] = useState(false);
+  // ...
+};
+
+// Dopo (TypeScript)
+interface UseScrollReturn {
+  scrolled: boolean;
+  scrollY: number;
+}
+
+const useScroll = (threshold: number = 50): UseScrollReturn => {
+  const [scrolled, setScrolled] = useState<boolean>(false);
+  // ...
+};
+```
+
+## Cosa ho imparato
+
+- **Non serve essere perfetti subito**: puoi usare `any` temporaneamente e affinare dopo
+- **Le interfacce sono potenti**: definisci la forma dei dati una volta sola
+- **`as const`** trasforma gli array in tuple readonly — perfetto per i dati statici
+
+## Conclusione
+
+TypeScript richiede un po' più di codice iniziale, ma ripaga subito in produttività e qualità. Per un portfolio che vuole impressionare recruiter senior, è indispensabile.

@@ -1,0 +1,118 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ============================================
+  # 🔍 Quality Checks
+  # ============================================
+  quality:
+    name: 🔍 Lint & Type Check
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 📚 Install dependencies
+        run: npm ci
+
+      - name: 🔍 Lint
+        run: npm run lint
+
+      - name: 🔎 Type Check
+        run: npm run type-check
+
+  # ============================================
+  # 🧪 Unit Tests
+  # ============================================
+  test:
+    name: 🧪 Unit Tests
+    runs-on: ubuntu-latest
+    needs: quality
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 📚 Install dependencies
+        run: npm ci
+
+      - name: 🧪 Run tests
+        run: npm run test:run
+
+      - name: 📊 Upload coverage (optional)
+        uses: codecov/codecov-action@v4
+        if: always()
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false
+
+  # ============================================
+  # 🏗️ Build
+  # ============================================
+  build:
+    name: 🏗️ Build
+    runs-on: ubuntu-latest
+    needs: [quality, test]
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 📚 Install dependencies
+        run: npm ci
+
+      - name: 🏗️ Build Next.js
+        run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+
+      - name: 📤 Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nextjs-build
+          path: .next
+          retention-days: 7
+
+# ============================================
+# 🚀 DEPLOY
+# ============================================
+# Il deploy NON avviene qui: il progetto è collegato a Vercel tramite Git
+# integration, quindi Vercel builda e pubblica da sé a ogni push su main
+# (e crea preview automatiche sulle pull request).
+#
+# I job `deploy-preview` e `deploy-production` che vivevano in questo file
+# usavano amondnet/vercel-action e richiedevano i secrets VERCEL_TOKEN,
+# VERCEL_ORG_ID e VERCEL_PROJECT_ID. Non essendo mai stati configurati,
+# facevano fallire ogni run della pipeline pur con lint, test e build verdi.
+# Rimossi perché duplicavano un deploy che Vercel già gestisce.
+#
+# Se un domani si volesse riportare il deploy dentro GitHub Actions, va
+# prima disattivata la Git integration su Vercel per evitare doppi deploy.

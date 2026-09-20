@@ -1,0 +1,236 @@
+'use client';
+
+/**
+ * Sezione contatti: recapiti diretti a sinistra, form in stile dashboard a destra.
+ *
+ * L'invio passa da `useEmail`, che legge le credenziali solo da variabili
+ * `NEXT_PUBLIC_`. Se mancano, il form si disabilita e propone l'email diretta:
+ * meglio un canale onesto che un pulsante che finge di funzionare grazie a
+ * credenziali hardcodate nel bundle.
+ */
+
+import { useState, type FormEvent } from 'react';
+import { AlertCircle, CheckCircle2, Loader2, Mail, MapPin, Phone, Send } from 'lucide-react';
+import { personalInfo } from '../../data/profileData';
+import { useEmail, type EmailFormData } from '../../hooks/useEmail';
+import { Button } from '../ui/Button';
+import { Field, Input, Textarea } from '../ui/Field';
+import { SectionHeading } from '../ui/SectionHeading';
+import { GithubIcon, LinkedinIcon } from '../ui/SocialIcons';
+
+const emptyForm: EmailFormData = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  message: '',
+};
+
+export function Contact() {
+  const [form, setForm] = useState<EmailFormData>(emptyForm);
+  const { status, feedback, errors, sendEmail, isConfigured } = useEmail();
+
+  const isSending = status === 'sending';
+
+  const update = (field: keyof EmailFormData) => (value: string) =>
+    setForm((current) => ({ ...current, [field]: value }));
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const sent = await sendEmail(form);
+    if (sent) setForm(emptyForm);
+  };
+
+  return (
+    <section id="contact" className="scroll-mt-20 border-t border-border/60 py-24 sm:py-32">
+      <div className="container">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <SectionHeading
+              eyebrow="Contatti"
+              title="Parliamone"
+              description="Cerco un team dove applicare lo stack Next.js/Laravel su progetti reali. Scrivimi: rispondo a tutti."
+              align="left"
+            />
+
+            <ul className="mt-10 flex flex-col gap-4">
+              <li>
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  className="group flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  <span className="flex size-10 items-center justify-center rounded-lg border border-border bg-card/40 transition-colors group-hover:border-primary/50">
+                    <Mail className="size-4 text-primary" aria-hidden="true" />
+                  </span>
+                  {personalInfo.email}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`tel:${personalInfo.phone.replace(/\s/g, '')}`}
+                  className="group flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  <span className="flex size-10 items-center justify-center rounded-lg border border-border bg-card/40 transition-colors group-hover:border-primary/50">
+                    <Phone className="size-4 text-primary" aria-hidden="true" />
+                  </span>
+                  {personalInfo.phone}
+                </a>
+              </li>
+              <li className="flex items-center gap-3 text-sm text-muted-foreground">
+                <span className="flex size-10 items-center justify-center rounded-lg border border-border bg-card/40">
+                  <MapPin className="size-4 text-primary" aria-hidden="true" />
+                </span>
+                {personalInfo.location}
+              </li>
+            </ul>
+
+            <div className="mt-8 flex items-center gap-3">
+              <a
+                href={personalInfo.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="flex size-10 items-center justify-center rounded-lg border border-border bg-card/40 text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <GithubIcon className="size-4" />
+              </a>
+              <a
+                href={personalInfo.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="flex size-10 items-center justify-center rounded-lg border border-border bg-card/40 text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <LinkedinIcon className="size-4" />
+              </a>
+            </div>
+          </div>
+
+          <form
+            onSubmit={handleSubmit}
+            noValidate
+            className="rounded-xl border border-border/80 bg-card/40 p-6 sm:p-8"
+          >
+            <div className="grid gap-5 sm:grid-cols-2">
+              <Field htmlFor="firstName" label="Nome" error={errors.firstName}>
+                <Input
+                  id="firstName"
+                  name="firstName"
+                  autoComplete="given-name"
+                  placeholder="Mario"
+                  value={form.firstName}
+                  onChange={(event) => update('firstName')(event.target.value)}
+                  aria-invalid={Boolean(errors.firstName)}
+                  aria-describedby={errors.firstName ? 'firstName-error' : undefined}
+                  disabled={isSending}
+                />
+              </Field>
+
+              <Field htmlFor="lastName" label="Cognome">
+                <Input
+                  id="lastName"
+                  name="lastName"
+                  autoComplete="family-name"
+                  placeholder="Rossi"
+                  value={form.lastName}
+                  onChange={(event) => update('lastName')(event.target.value)}
+                  disabled={isSending}
+                />
+              </Field>
+
+              <Field htmlFor="email" label="Email" error={errors.email}>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  inputMode="email"
+                  autoComplete="email"
+                  placeholder="mario.rossi@azienda.it"
+                  value={form.email}
+                  onChange={(event) => update('email')(event.target.value)}
+                  aria-invalid={Boolean(errors.email)}
+                  aria-describedby={errors.email ? 'email-error' : undefined}
+                  disabled={isSending}
+                />
+              </Field>
+
+              <Field htmlFor="phone" label="Telefono (facoltativo)">
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  inputMode="tel"
+                  autoComplete="tel"
+                  placeholder="+39 000 000 0000"
+                  value={form.phone}
+                  onChange={(event) => update('phone')(event.target.value)}
+                  disabled={isSending}
+                />
+              </Field>
+
+              <Field
+                htmlFor="message"
+                label="Messaggio"
+                error={errors.message}
+                className="sm:col-span-2"
+              >
+                <Textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  placeholder="Raccontami del progetto o della posizione."
+                  value={form.message}
+                  onChange={(event) => update('message')(event.target.value)}
+                  aria-invalid={Boolean(errors.message)}
+                  aria-describedby={errors.message ? 'message-error' : undefined}
+                  disabled={isSending}
+                />
+              </Field>
+            </div>
+
+            {!isConfigured && (
+              <p className="mt-6 flex items-start gap-2 rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 text-xs text-amber-200">
+                <AlertCircle className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+                <span>
+                  Invio dal sito non configurato su questo ambiente. Scrivimi direttamente a{' '}
+                  <a href={`mailto:${personalInfo.email}`} className="underline">
+                    {personalInfo.email}
+                  </a>
+                  .
+                </span>
+              </p>
+            )}
+
+            <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <Button type="submit" disabled={isSending || !isConfigured}>
+                {isSending ? (
+                  <>
+                    <Loader2 className="animate-spin" aria-hidden="true" />
+                    Invio in corso
+                  </>
+                ) : (
+                  <>
+                    <Send aria-hidden="true" />
+                    Invia messaggio
+                  </>
+                )}
+              </Button>
+
+              <p
+                role="status"
+                aria-live="polite"
+                className={`flex items-center gap-2 text-sm ${
+                  status === 'success' ? 'text-emerald-400' : 'text-red-400'
+                }`}
+              >
+                {status === 'success' && <CheckCircle2 className="size-4" aria-hidden="true" />}
+                {status === 'error' && <AlertCircle className="size-4" aria-hidden="true" />}
+                {feedback}
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+}
