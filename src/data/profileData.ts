@@ -191,9 +191,13 @@ export const personalInfo: PersonalInfo = {
  * array identico, e aggiungere un canale significava ricordarsi di farlo in due
  * punti. Ora entrambi iterano questo.
  *
- * ⚠️ Il numero WhatsApp è un SEGNAPOSTO e va sostituito con quello reale prima di
- * pubblicare: il link porta a una chat inesistente. Formato `wa.me`: prefisso
- * internazionale senza `+` né spazi, messaggio precompilato in `?text=`.
+ * Il link WhatsApp non ripete il numero: lo deriva da `personalInfo.phone`
+ * togliendo tutto ciò che non è una cifra, come richiede il formato `wa.me`
+ * (prefisso internazionale, niente `+` né spazi). Così il numero resta scritto in
+ * un solo posto e cambiarlo aggiorna insieme il link `tel:` e la chat.
+ *
+ * ⚠️ Assunzione: il numero WhatsApp coincide con quello di telefono. Se un domani
+ * fossero diversi, questa riga va slegata da `personalInfo.phone`.
  */
 export const socialLinks: readonly SocialLink[] = [
   {
@@ -214,7 +218,7 @@ export const socialLinks: readonly SocialLink[] = [
   {
     platform: 'whatsapp',
     label: 'WhatsApp',
-    href: 'https://wa.me/393000000000?text=Ciao%20Carmelo%20ti%20contatto%20per%20delle%20info',
+    href: `https://wa.me/${personalInfo.phone.replace(/\D/g, '')}?text=Ciao%20Carmelo%20ti%20contatto%20per%20delle%20info`,
   },
 ];
 

@@ -84,9 +84,15 @@ nella vecchia codebase.
 - [x] WhatsApp come canale di contatto: voce in `socialLinks`, pulsante flottante
       `WhatsAppFloat` nel root layout, propagazione in Hero, Footer e Contact
 - [x] Copy delle card progetti da "Case study" a "Info", presidiata da test
-- [ ] Sostituire il numero WhatsApp segnaposto (`wa.me/393000000000`) con quello
-      reale. Da fare in locale prima del deploy: non va committato in chiaro su un
-      repository pubblico
+- [x] Numero WhatsApp reale al posto del segnaposto. Non riscritto a mano: il link
+      deriva da `personalInfo.phone` togliendo i non-cifra, quindi il numero resta
+      in un solo punto e alimenta insieme `tel:` e la chat. Nessuna esposizione
+      nuova: il numero era già pubblicato e reso come link `tel:` in pagina
+- [ ] Decidere `SITE_URL`: oggi vale `my-profile-ten-beta.vercel.app`, **lo stesso
+      host della card "Portfolio v1"**. Il sito dichiara come proprio canonical
+      l'URL che elenca come progetto precedente. Da sciogliere quando si sa dove
+      viene pubblicata la V2: alimenta `metadataBase`, canonical, OpenGraph,
+      JSON-LD, `sitemap.ts` e `robots.ts`
 - [x] Allineare i dati di località: nuovo campo `personalInfo.city` agganciato a
       `addressLocality` del JSON-LD e alle keyword SEO, che prima dichiaravano
       "Agrigento" scritto a mano. Accento di "Canicattì" uniformato e README
