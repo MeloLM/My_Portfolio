@@ -97,6 +97,26 @@ nella vecchia codebase.
       `addressLocality` del JSON-LD e alle keyword SEO, che prima dichiaravano
       "Agrigento" scritto a mano. Accento di "Canicattì" uniformato e README
       allineato. Un test impedisce a `city` e `location` di divergere di nuovo
+- [ ] Scegliere la foto della hero e valorizzare `personalInfo.avatarSrc`: oggi
+      il campo è vuoto e la colonna destra mostra un riquadro 4:5 con le
+      iniziali. Bastano due passi — salvare il file in `public/img/` e scrivere
+      qui il path — e da quel momento il test del data layer ne sorveglia
+      l'esistenza. Il riquadro tiene già lo spazio, quindi aggiungere la foto
+      non sposta il layout
+- [x] Riunificare il posizionamento. `role` diventa "Full Stack Developer",
+      `tagline` reintegra lo stack completo e colloca l'IA come metodo. Sciolte
+      le due copie scritte a mano: la tappa "Oggi" della timeline legge
+      `personalInfo.role`, e la meta description non è più hardcodata in
+      `layout.tsx`. La stringa "Jr" non compare più nell'HTML servito
+- [x] Portare la meta description sotto un'unica fonte. Non punta a `summary`
+      per intero (476 caratteri: Google tronca lo snippet intorno ai 160) ma a
+      `headline`, la frase di apertura da cui `summary` stessa è composta. Tre
+      test presidiano derivazione e tetto di lunghezza
+- [x] Ripristinato `PROMPT_PORTFOLIO_V2.md`, cancellato per errore dal working
+      tree: resta come registro storico
+- [ ] Rivedere il sottotitolo della hero: `role · tagline` fa 77 caratteri e da
+      `lg` in su sta in una colonna di ~536px, quindi manda a capo su tre righe.
+      Da guardare su schermo prima di decidere se accorciare la tagline
 
 ### Debito residuo
 - [ ] Completare i test sui componenti. Coperti: `Button`, `Field`, `Badge`, `Hero`,

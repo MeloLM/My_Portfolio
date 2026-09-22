@@ -9,7 +9,15 @@
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { personalInfo, projects, skills, timeline } from '../../data/profileData';
+import {
+  headline,
+  metaDescription,
+  personalInfo,
+  projects,
+  skills,
+  summary,
+  timeline,
+} from '../../data/profileData';
 
 const publicDir = join(process.cwd(), 'public');
 const assetExists = (path: string) => existsSync(join(publicDir, path));
@@ -95,6 +103,16 @@ describe('personalInfo', () => {
     expect(personalInfo.location).toContain(personalInfo.city);
   });
 
+  it('punta a un ritratto realmente presente, se ne dichiara uno', () => {
+    // `avatarSrc` è opzionale: finché resta vuoto la hero mostra il segnaposto
+    // e il test non ha nulla da verificare. Appena viene valorizzato torna
+    // valida la stessa regola già applicata a icone e anteprime dei progetti —
+    // niente path che punta a un file inesistente.
+    if (!personalInfo.avatarSrc) return;
+
+    expect(assetExists(personalInfo.avatarSrc), personalInfo.avatarSrc).toBe(true);
+  });
+
   it('usa profili social con URL assoluti', () => {
     for (const url of [personalInfo.github, personalInfo.linkedin, personalInfo.instagram]) {
       expect(url).toMatch(/^https:\/\//);
@@ -106,5 +124,35 @@ describe('timeline', () => {
   it('non è vuota e termina con la tappa di carriera corrente', () => {
     expect(timeline.length).toBeGreaterThan(0);
     expect(timeline[timeline.length - 1]?.type).toBe('career');
+  });
+
+  it('non ridichiara il ruolo nella tappa corrente', () => {
+    // La tappa "Oggi" e l'intestazione della hero dicono la stessa cosa. Finché
+    // erano due stringhe separate hanno finito per dirne due diverse.
+    expect(timeline[timeline.length - 1]?.title).toBe(personalInfo.role);
+  });
+});
+
+describe('testi del posizionamento', () => {
+  it('costruisce la bio a partire dalla frase di apertura', () => {
+    expect(summary.startsWith(headline)).toBe(true);
+  });
+
+  it('deriva la meta description dalla stessa frase', () => {
+    // Se qualcuno riscrivesse `metaDescription` a mano, come era prima della
+    // V2.1, questo test cadrebbe: è esattamente la regressione da impedire.
+    expect(metaDescription.startsWith(headline)).toBe(true);
+  });
+
+  it('tiene la meta description dentro lo snippet di ricerca', () => {
+    // Oltre i ~160 caratteri Google tronca a metà parola. È il motivo per cui
+    // la meta description non può essere `summary` per intero.
+    expect(metaDescription.length).toBeLessThanOrEqual(160);
+  });
+
+  it('non riusa la meta description come bio', () => {
+    // Sono due testi con due mestieri: lo snippet è corto e navigazionale, la
+    // bio è completa e alimenta il JSON-LD `Person`.
+    expect(summary.length).toBeGreaterThan(metaDescription.length);
   });
 });

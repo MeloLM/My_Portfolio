@@ -2,7 +2,7 @@
 
 # 🚀 Carmelo La Mantia — Portfolio
 
-**Jr Full Stack Developer** · Canicattì (AG), Sicilia
+**Full Stack Developer** · Canicattì (AG), Sicilia
 
 Portfolio personale costruito in **Next.js 14 · TypeScript strict · Tailwind CSS**
 
@@ -47,7 +47,7 @@ La **V2** è una riscrittura completa, non un restyling. La versione precedente 
 | ⚡ **Server-first** | Su tutto l'albero solo **5 file** sono Client Component. La landing è HTML statico al primo byte: **120 kB** di First Load JS |
 | 🔐 **Zero credenziali nel codice** | Nessun fallback hardcodato. Se le variabili d'ambiente mancano, il form si disabilita e mostra l'email diretta invece di fingere di funzionare |
 | ♿ **Accessibilità verificata** | Skip link, focus ring coerente, menu mobile con `aria-expanded` e chiusura da `Escape`, errori annunciati via `aria-describedby`, `prefers-reduced-motion` rispettato |
-| 🧪 **108 test** | Vitest + Testing Library su data layer, hook, primitive UI e sezioni. La suite è validata con test di mutazione |
+| 🧪 **175 test** | Vitest + Testing Library su data layer, hook, primitive UI e sezioni. La suite è validata con test di mutazione |
 | 🎨 **Design token semantici** | I colori esistono una volta sola come canali HSL. Nessun valore esadecimale nel markup |
 | 🌌 **Starfield su canvas** | Sfondo animato che si ferma da sé fuori dal viewport, a scheda inattiva e con `prefers-reduced-motion`. Costo: **+0.8 kB** |
 | 📄 **SEO completa** | JSON-LD Person e WebSite, OG image 1200×630 generata a runtime, sitemap con tutte le rotte dinamiche |
@@ -140,7 +140,7 @@ src/
 ├── data/profileData.ts         # ⭐ Single source of truth
 ├── hooks/                      # useScroll, useEmail
 ├── lib/                        # Lettura MDX, helper cn()
-└── __tests__/                  # 108 test su 7 file
+└── __tests__/                  # 175 test su 11 file
 ```
 
 **Regola di dipendenza:** `sections → ui`, mai il contrario. Le primitive non importano il data layer.
@@ -170,7 +170,7 @@ La composizione delle classi passa da `cn()` (`clsx` + `tailwind-merge`), così 
 ```bash
 npx tsc --noEmit    # 0 errori
 npx next lint       # 0 warning
-npx vitest run      # 7 file, 108 test
+npx vitest run      # 11 file, 175 test
 npx next build      # 15 pagine generate a build time
 ```
 

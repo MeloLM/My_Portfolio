@@ -148,7 +148,7 @@ export function Contact() {
                   type="email"
                   inputMode="email"
                   autoComplete="email"
-                  placeholder="mario.rossi@azienda.it"
+                  placeholder="mario.rossi@email.com"
                   value={form.email}
                   onChange={(event) => update('email')(event.target.value)}
                   aria-invalid={Boolean(errors.email)}

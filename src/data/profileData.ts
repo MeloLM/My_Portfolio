@@ -75,6 +75,20 @@ export interface PersonalInfo {
   readonly instagram: string;
   /** Path del CV dentro public/. */
   readonly cvPath: string;
+  /**
+   * Ritratto mostrato nella colonna destra della hero, path dentro public/.
+   *
+   * Opzionale di proposito. Finché non è valorizzato la hero disegna un
+   * riquadro segnaposto delle stesse proporzioni: lo spazio resta occupato e il
+   * layout non si muove, ma al browser non viene chiesta un'immagine che non
+   * esiste — che si tradurrebbe in un 400 dell'ottimizzatore e nell'icona di
+   * immagine rotta in pagina.
+   *
+   * Per attivarlo: salvare il file in `public/img/` e scrivere qui il path. Da
+   * quel momento il test del data layer ne sorveglia l'esistenza, come già fa
+   * per le icone delle skill e per le anteprime dei progetti.
+   */
+  readonly avatarSrc?: string;
 }
 
 /**
@@ -171,8 +185,8 @@ export interface TimelineEvent {
 
 export const personalInfo: PersonalInfo = {
   name: 'Carmelo La Mantia',
-  role: 'Jr Full Stack Developer',
-  tagline: 'AI-Augmented Development · Next.js · Laravel',
+  role: 'Full Stack Developer',
+  tagline: 'Next.js · Laravel · TypeScript · AI-Augmented Workflow',
   city: 'Canicattì',
   location: 'Canicattì (AG), Sicilia',
   birthDate: '12/09/2000',
@@ -222,12 +236,44 @@ export const socialLinks: readonly SocialLink[] = [
   },
 ];
 
-export const summary =
-  'Jr Full Stack Developer specializzato nello stack Next.js/TypeScript e PHP/Laravel. ' +
-  'Progetta e realizza applicazioni web full-stack curando performance, accessibilità e ' +
-  'type-safety, con approccio AI-Augmented (AI come acceleratore di scaffolding, refactoring ' +
-  'e code review, mantenendo il controllo sulle scelte architetturali). In parallelo, laurea ' +
-  'triennale in Ingegneria Informatica.';
+/**
+ * Frase di apertura della bio, isolata perché serve anche da sola.
+ *
+ * Esiste per far esistere `metaDescription` senza riscrivere il testo: vedi il
+ * commento lì sotto.
+ */
+export const headline =
+  'Sviluppatore Full Stack con focus su Next.js, TypeScript e PHP/Laravel.';
+
+/**
+ * Presentazione professionale, in un punto solo.
+ *
+ * Non alimenta solo la hero: è anche la `description` del JSON-LD `Person` in
+ * `app/layout.tsx`, dove la lunghezza non è un problema perché i dati
+ * strutturati non vengono troncati come lo snippet di ricerca.
+ */
+export const summary = [
+  headline,
+  "Progetto e sviluppo soluzioni web curando l'intero ciclo di vita del software: " +
+    'modellazione di database relazionali, sicurezza, performance e interfacce accessibili.',
+  'Adotto un flusso di lavoro AI-augmented avanzato per ottimizzare refactoring, ' +
+    'scaffolding e testing, mantenendo il controllo rigoroso sulle decisioni architetturali.',
+  'In parallelo, proseguo il percorso accademico in Ingegneria Informatica.',
+].join(' ');
+
+/**
+ * `<meta name="description">`, cioè lo snippet nei risultati di ricerca.
+ *
+ * Non può essere `summary` per intero: Google taglia lo snippet intorno ai 160
+ * caratteri e la bio ne conta oltre 500, quindi finirebbe troncata a metà
+ * parola. È invece una proiezione di `headline`, così il testo che descrive il
+ * profilo resta scritto in un punto solo — fino alla V2.1 questa era una terza
+ * copia hardcodata in `app/layout.tsx`, rimasta indietro di un posizionamento.
+ *
+ * Il richiamo di navigazione in coda vive qui e non nella bio perché descrive la
+ * pagina, non la persona. Un test presidia il tetto dei 160 caratteri.
+ */
+export const metaDescription = `${headline} Progetti, percorso e contatti.`;
 
 // ============================================================================
 // COMPETENZE
@@ -528,7 +574,9 @@ export const timeline: readonly TimelineEvent[] = [
   },
   {
     year: 'Oggi',
-    title: 'Jr Full Stack Developer',
+    // Derivato: questa tappa e l'intestazione della hero dicono la stessa cosa,
+    // e prima della V2.1 dicevano due cose diverse.
+    title: personalInfo.role,
     subtitle: 'Obiettivo professionale',
     description:
       'Alla ricerca di un team dove applicare lo stack Next.js/Laravel su progetti reali e complessi.',

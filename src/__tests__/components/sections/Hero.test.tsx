@@ -16,7 +16,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest';
 import { Hero } from '../../../components/sections/Hero';
-import { personalInfo } from '../../../data/profileData';
+import { personalInfo, summary } from '../../../data/profileData';
 
 const originalGetContext = HTMLCanvasElement.prototype.getContext;
 
@@ -34,6 +34,14 @@ describe('Hero', () => {
       render(<Hero />);
 
       expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(personalInfo.name);
+    });
+
+    it('should render the bio from the data layer', () => {
+      render(<Hero />);
+
+      // La bio non è scritta qui dentro: se cambia in `profileData` questo test
+      // continua a valere, mentre una copia incollata nel markup lo romperebbe.
+      expect(screen.getByText(summary)).toBeInTheDocument();
     });
 
     it('should render both call to action links', () => {
@@ -90,6 +98,49 @@ describe('Hero', () => {
       // rendering dell'intera sezione fallirebbe.
       expect(() => render(<Hero />)).not.toThrow();
       expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument();
+    });
+  });
+
+  describe('portrait column', () => {
+    it('should not request an image while no portrait is configured', () => {
+      // Il segnaposto non è solo estetica: puntare `<Image>` a un file che non
+      // esiste produce un 400 dell'ottimizzatore e l'icona di immagine rotta.
+      render(<Hero />);
+
+      if (personalInfo.avatarSrc) return;
+
+      expect(screen.queryByRole('img')).not.toBeInTheDocument();
+    });
+
+    it('should keep the placeholder out of the accessibility tree', () => {
+      render(<Hero />);
+
+      if (personalInfo.avatarSrc) return;
+
+      // Le iniziali sono il buco lasciato dalla foto, non un'informazione: il
+      // nome per esteso è già nell'`h1` accanto.
+      //
+      // Si verifica l'antenato `aria-hidden` e non l'assenza del nodo: le query
+      // `ByText` leggono il DOM, non l'albero di accessibilità, quindi trovano
+      // comunque un elemento nascosto agli assistive tech.
+      const initials = personalInfo.name
+        .split(' ')
+        .map((part) => part.charAt(0))
+        .join('');
+
+      expect(screen.getByText(initials).closest('[aria-hidden="true"]')).not.toBeNull();
+    });
+
+    it('should render the portrait after the heading in reading order', () => {
+      // Su mobile la griglia collassa a una colonna e segue l'ordine del DOM:
+      // l'`h1` deve restare il primo elemento, sia per chi legge con uno screen
+      // reader sia perché è lui l'LCP della pagina.
+      render(<Hero />);
+
+      const heading = screen.getByRole('heading', { level: 1 });
+      const portrait = screen.getByTestId('hero-portrait');
+
+      expect(heading.compareDocumentPosition(portrait)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
     });
   });
 

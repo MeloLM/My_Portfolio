@@ -262,6 +262,19 @@ describe('Contact — invio fallito', () => {
   });
 });
 
+describe('Contact — segnaposto dei campi', () => {
+  it('propone un esempio di email generico, non aziendale', () => {
+    // Il segnaposto è copy visibile quanto un'etichetta: suggerire un
+    // indirizzo @azienda.it presupponeva un interlocutore con partita IVA.
+    render(<Contact />);
+
+    expect(screen.getByLabelText('Email')).toHaveAttribute(
+      'placeholder',
+      'mario.rossi@email.com'
+    );
+  });
+});
+
 describe('Contact — canali social', () => {
   /** I link social stanno fuori dal form: non dipendono dalla configurazione. */
   function linkSocial() {

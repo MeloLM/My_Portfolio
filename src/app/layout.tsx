@@ -8,7 +8,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { SITE_URL } from '../constants';
-import { personalInfo, summary, skills, projects } from '../data/profileData';
+import { personalInfo, summary, metaDescription, skills, projects } from '../data/profileData';
 import { WhatsAppFloat } from '../components/layout/WhatsAppFloat';
 import './globals.css';
 
@@ -27,8 +27,10 @@ export const metadata: Metadata = {
     template: `%s | ${personalInfo.name}`,
   },
 
-  description:
-    'Jr Full Stack Developer specializzato in Next.js, TypeScript, PHP e Laravel. Progetti, percorso e contatti.',
+  // Derivata dal data layer, non riscritta qui. Era una terza copia a mano
+  // accanto a `summary` e `personalInfo.role`, e come tutte le copie a mano si
+  // era fermata a un posizionamento precedente.
+  description: metaDescription,
 
   keywords: [
     personalInfo.name,
