@@ -5,10 +5,28 @@
 
 import fs from 'fs';
 import path from 'path';
+import { createElement, type ComponentProps } from 'react';
 import matter from 'gray-matter';
 import { compileMDX } from 'next-mdx-remote/rsc';
 
 const BLOG_DIR = path.join(process.cwd(), 'src', 'content', 'blog');
+
+/**
+ * Sostituzioni applicate al Markdown dei post.
+ *
+ * La pagina del post rende già un `h1` dal frontmatter. Un `#` nel corpo ne
+ * creerebbe un secondo, e due radici valgono quanto nessuna per un crawler —
+ * è esattamente ciò che accadeva a entrambi i post, che ripetevano il proprio
+ * titolo come prima riga. Qualunque `#` scende quindi a `h2`: la gerarchia
+ * resta corretta qualunque cosa scriva chi redige il post, invece di dipendere
+ * dal fatto che se lo ricordi.
+ *
+ * Esportata perché sia verificabile da sola: `createElement` e non JSX perché
+ * questo è un `.ts`.
+ */
+export const mdxComponents = {
+  h1: (props: ComponentProps<'h1'>) => createElement('h2', props),
+};
 
 export interface BlogPost {
   slug: string;
@@ -69,6 +87,7 @@ export async function getBlogPost(slug: string): Promise<BlogPostFull | null> {
   const { content } = await compileMDX({
     source: mdxContent,
     options: { parseFrontmatter: false },
+    components: mdxComponents,
   });
 
   return {

@@ -99,3 +99,21 @@ export const NAV_ITEMS: readonly NavItem[] = [
   { label: 'Blog', href: '/blog' },
   { label: 'Contatti', href: '/#contact' },
 ];
+
+// ============================================================================
+// PRIVACY
+// ============================================================================
+
+/**
+ * Chiave con cui `CookieBanner` ricorda che la nota è stata letta.
+ *
+ * Vive qui e non nel componente perché la usano entrambi i lati del confine:
+ * `CookieBanner` (`'use client'`) la scrive, e la pagina `/privacy` (Server
+ * Component) la dichiara all'utente per nome. Tenerla in un modulo neutro evita
+ * che una Server Component debba importare da un modulo client per leggere una
+ * stringa, ed è ciò che impedisce alle due parti di divergere.
+ *
+ * Non è versionata: se un domani il testo della nota cambiasse nella sostanza e
+ * servisse riproporla a chi l'ha già chiusa, la via è cambiare questa stringa.
+ */
+export const NOTICE_STORAGE_KEY = 'privacy_accepted';

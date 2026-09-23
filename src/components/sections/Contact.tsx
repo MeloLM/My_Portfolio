@@ -10,6 +10,7 @@
  */
 
 import { useState, type FormEvent } from 'react';
+import Link from 'next/link';
 import { AlertCircle, CheckCircle2, Loader2, Mail, MapPin, Phone, Send } from 'lucide-react';
 import { personalInfo, socialLinks } from '../../data/profileData';
 import { useEmail, type EmailFormData } from '../../hooks/useEmail';
@@ -48,7 +49,7 @@ export function Contact() {
           <div>
             <SectionHeading
               eyebrow="Contatti"
-              title="Parliamone"
+              title="Lavoriamo insieme"
               description="Cerco un team dove applicare lo stack Next.js/Laravel su progetti reali. Scrivimi: rispondo a tutti."
               align="left"
             />
@@ -245,6 +246,22 @@ export function Contact() {
                 </span>
               </p>
             </div>
+
+            {/*
+              Nota informativa, non una checkbox: il consenso è prestato con
+              l'invio. Sta sotto al pulsante perché è lì che l'utente decide, e
+              usa `Link` perché /privacy è una rotta interna.
+            */}
+            <p className="mt-4 text-xs text-muted-foreground">
+              Inviando il form accetti il trattamento dei dati personali secondo la{' '}
+              <Link
+                href="/privacy"
+                className="underline underline-offset-2 transition-colors hover:text-foreground"
+              >
+                Privacy Policy
+              </Link>
+              .
+            </p>
           </form>
         </div>
       </div>

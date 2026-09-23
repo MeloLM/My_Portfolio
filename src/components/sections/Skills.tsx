@@ -85,7 +85,7 @@ export function Skills() {
       <div className="container">
         <SectionHeading
           eyebrow="Competenze"
-          title="Lo stack con cui lavoro"
+          title="Con cosa lavoro"
           description="Frontend e backend, più il metodo di lavoro. Le percentuali indicano quanto mi muovo in autonomia su ciascuna tecnologia, non un punteggio assoluto."
         />
 

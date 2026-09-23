@@ -18,7 +18,7 @@ export function Projects() {
       <div className="container">
         <SectionHeading
           eyebrow="Progetti"
-          title="Cosa ho costruito"
+          title="Alcuni esempi dei miei lavori"
           description="Sei progetti fra applicazioni full-stack, dashboard e un browser game. Ognuno ha una pagina di dettaglio con problema, soluzione e risultati."
         />
 

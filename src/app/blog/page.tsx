@@ -23,6 +23,7 @@ export default async function BlogPage() {
     <PageShell>
       <div className="container max-w-3xl">
         <SectionHeading
+          as="h1"
           eyebrow="DevLog"
           title="Note tecniche"
           description="Quello che imparo mentre costruisco, scritto per ritrovarlo dopo."

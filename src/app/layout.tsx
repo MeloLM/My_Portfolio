@@ -10,6 +10,7 @@ import { Inter } from 'next/font/google';
 import { SITE_URL } from '../constants';
 import { personalInfo, summary, metaDescription, skills, projects } from '../data/profileData';
 import { WhatsAppFloat } from '../components/layout/WhatsAppFloat';
+import { CookieBanner } from '../components/ui/CookieBanner';
 import './globals.css';
 
 // Font unico, self-hosted da next/font: zero richieste esterne a runtime.
@@ -155,8 +156,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="min-h-screen bg-background font-sans text-foreground">
         {children}
-        {/* Fuori da `children` così resta visibile su ogni rotta, landing e pagine interne. */}
+        {/* Fuori da `children` così restano visibili su ogni rotta, landing e pagine interne. */}
         <WhatsAppFloat />
+        <CookieBanner />
       </body>
     </html>
   );

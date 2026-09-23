@@ -29,7 +29,7 @@ export function Timeline() {
       <div className="container">
         <SectionHeading
           eyebrow="Percorso"
-          title="Come ci sono arrivato"
+          title="Da dove sono partito"
           description="Un passaggio graduale dall'istruzione tecnica allo sviluppo full-stack, con il lavoro a fare da palestra per le soft skill."
           align="left"
           className="max-w-2xl"

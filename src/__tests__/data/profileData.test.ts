@@ -12,6 +12,7 @@ import { describe, expect, it } from 'vitest';
 import {
   headline,
   metaDescription,
+  metrics,
   personalInfo,
   projects,
   skills,
@@ -130,6 +131,22 @@ describe('timeline', () => {
     // La tappa "Oggi" e l'intestazione della hero dicono la stessa cosa. Finché
     // erano due stringhe separate hanno finito per dirne due diverse.
     expect(timeline[timeline.length - 1]?.title).toBe(personalInfo.role);
+  });
+});
+
+describe('metrics', () => {
+  it('ne dichiara un numero che riempie la griglia', () => {
+    // La striscia è `grid-cols-2 lg:grid-cols-4`: un numero non multiplo di
+    // quattro lascia una riga spaiata sul desktop.
+    expect(metrics.length).toBeGreaterThan(0);
+    expect(metrics.length % 4).toBe(0);
+  });
+
+  it('compila sempre entrambi i lati della coppia', () => {
+    for (const { value, label } of metrics) {
+      expect(value.trim().length, 'valore vuoto').toBeGreaterThan(0);
+      expect(label.trim().length, 'etichetta vuota').toBeGreaterThan(0);
+    }
   });
 });
 

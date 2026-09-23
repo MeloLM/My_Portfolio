@@ -51,10 +51,21 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="container mt-8 border-t border-border/60 pt-6">
+      <div className="container mt-8 flex flex-col gap-3 border-t border-border/60 pt-6 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-xs text-muted-foreground">
           © {year} {personalInfo.name}. Costruito con Next.js, TypeScript e Tailwind CSS.
         </p>
+
+        {/*
+          Fuori da `NAV_ITEMS`: quello alimenta anche la navbar e il menu mobile,
+          e l'informativa non è navigazione primaria.
+        */}
+        <Link
+          href="/privacy"
+          className="text-xs text-muted-foreground transition-colors hover:text-foreground"
+        >
+          Privacy Policy
+        </Link>
       </div>
     </footer>
   );

@@ -70,7 +70,10 @@ describe('Contact — credenziali mancanti', () => {
   it('renderizza comunque la sezione e i suoi contatti diretti', () => {
     render(<Contact />);
 
-    expect(screen.getByRole('heading', { name: 'Parliamone' })).toBeInTheDocument();
+    // Si verifica che l'intestazione ci sia, non cosa dica: il titolo è copy e
+    // cambia: agganciarvi l'assertion trasforma ogni ritocco di testo in un
+    // test rosso che non segnala alcun difetto.
+    expect(screen.getByRole('heading', { level: 2 })).toBeInTheDocument();
     expect(screen.getAllByRole('link', { name: personalInfo.email }).length).toBeGreaterThan(0);
   });
 
@@ -259,6 +262,27 @@ describe('Contact — invio fallito', () => {
 
     expect(screen.getByLabelText('Nome')).toHaveValue('Mario');
     expect(screen.getByLabelText('Messaggio')).toHaveValue('Un messaggio abbastanza lungo.');
+  });
+});
+
+describe('Contact — informativa privacy', () => {
+  it('rimanda all informativa dal punto in cui si decide di inviare', () => {
+    // Il consenso è prestato con l'invio, quindi il rimando deve stare nel
+    // form e non solo nel footer: è lì che l'utente prende la decisione.
+    render(<Contact />);
+
+    expect(screen.getByRole('link', { name: 'Privacy Policy' })).toHaveAttribute(
+      'href',
+      '/privacy'
+    );
+  });
+
+  it('informa senza bloccare l invio con una checkbox', () => {
+    // Scelta deliberata: nessun campo di consenso da spuntare. Se un domani
+    // comparisse, questo test cade e la decisione torna in discussione.
+    render(<Contact />);
+
+    expect(screen.queryByRole('checkbox')).not.toBeInTheDocument();
   });
 });
 

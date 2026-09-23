@@ -170,6 +170,20 @@ export interface Language {
   readonly stars: number;
 }
 
+/** Numero chiave della striscia sotto la hero. */
+export interface Metric {
+  /** Testo grande. Stringa e non numero: convivono "10+", "100%" e "Next.js". */
+  readonly value: string;
+  /**
+   * Didascalia sotto al numero, in caso frase.
+   *
+   * Il maiuscolo è deciso dal componente con `uppercase`, non scritto qui: un
+   * dato in MAIUSCOLO costringerebbe uno screen reader a sillabare e
+   * impedirebbe di riusare la stessa etichetta altrove in tondo.
+   */
+  readonly label: string;
+}
+
 /** Tappa della timeline di carriera. */
 export interface TimelineEvent {
   readonly year: string;
@@ -252,6 +266,20 @@ export const headline =
  * `app/layout.tsx`, dove la lunghezza non è un problema perché i dati
  * strutturati non vengono troncati come lo snippet di ricerca.
  */
+/**
+ * Numeri chiave mostrati subito sotto la hero.
+ *
+ * Quattro e non tre o cinque: la griglia è `grid-cols-2 lg:grid-cols-4`, quindi
+ * un numero non multiplo di quattro lascerebbe una riga spaiata sul desktop. Un
+ * test lo presidia.
+ */
+export const metrics: readonly Metric[] = [
+  { value: '2+', label: 'Anni di studio' },
+  { value: '10+', label: 'Progetti realizzati' },
+  { value: '100%', label: 'Passione' },
+  { value: 'Next.js', label: 'Stack principale' },
+];
+
 export const summary = [
   headline,
   "Progetto e sviluppo soluzioni web curando l'intero ciclo di vita del software: " +

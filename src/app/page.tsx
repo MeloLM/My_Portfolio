@@ -9,6 +9,7 @@
 import { SiteHeader } from '../components/layout/SiteHeader';
 import { SiteFooter } from '../components/layout/SiteFooter';
 import { Hero } from '../components/sections/Hero';
+import { Metrics } from '../components/sections/Metrics';
 import { Skills } from '../components/sections/Skills';
 import { Projects } from '../components/sections/Projects';
 import { Timeline } from '../components/sections/Timeline';
@@ -28,6 +29,7 @@ export default function HomePage() {
 
       <main id="main-content">
         <Hero />
+        <Metrics />
         <Skills />
         <Projects />
         <Timeline />

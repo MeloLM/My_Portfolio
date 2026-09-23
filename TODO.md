@@ -114,16 +114,56 @@ nella vecchia codebase.
       test presidiano derivazione e tetto di lunghezza
 - [x] Ripristinato `PROMPT_PORTFOLIO_V2.md`, cancellato per errore dal working
       tree: resta come registro storico
+- [x] Informativa privacy per il rilascio pubblico: nuova rotta statica
+      `/privacy`, micro-testo sotto il pulsante di invio e link nel footer.
+      L'elenco dei dati raccolti è un `Record<keyof EmailFormData, string>`:
+      aggiungere un campo al form senza dichiararlo nell'informativa **non
+      compila**. Aggiunte tre sezioni che il brief non elencava ma che l'art. 13
+      GDPR richiede — destinatari (EmailJS come responsabile, Vercel come
+      hosting), conservazione e reclamo al Garante
+- [x] Nota informativa in sovrimpressione (`CookieBanner`) e striscia delle
+      metriche sotto la hero. Il testo della nota **non** dichiara "cookie
+      tecnici": il sito non ne installa nessuno, e affermarlo avrebbe reso falsa
+      la sezione 6 di `/privacy`. L'informativa è stata riallineata: ora dichiara
+      il solo dato realmente salvato, la chiave `localStorage` letta da
+      `constants`, e non promette più l'assenza di un banner
+- [x] Idratazione del banner verificata su browser reale (Edge via Playwright):
+      HTML servito privo del banner, console **senza errori né warning** a 375px
+      e 1280px, e il percorso accetta → ricarica → resta chiuso provato end to end
+- [x] Allineamento metriche corretto dopo averlo visto rotto: a 375px
+      "Progetti realizzati" va a capo e con `flex-col-reverse` spingeva in alto
+      il proprio numero. Risolto con `justify-end`; i valori ora condividono la
+      stessa linea (354/354 e 474/474 su mobile, 454×4 su desktop)
+- [ ] Decidere il valore di "10+ Progetti realizzati": il data layer ne espone
+      **sei**, tutti visibili nella griglia della stessa pagina. Se il numero
+      comprende lavori non in vetrina va bene così; altrimenti conviene
+      derivarlo da `projects.length` e toglierlo dalla manutenzione manuale
+- [ ] Verificare in DevTools sul deploy reale che l'informativa dica il vero:
+      scheda Application → Cookies e Storage vuote, e nel pannello Network
+      nessuna richiesta verso domini di terze parti. Il codice non ne contiene,
+      ma è una dichiarazione pubblica e va guardata sull'ambiente servito
+- [ ] Far rileggere l'informativa a chi di dovere prima del rilascio: il testo
+      descrive fedelmente cosa fa il codice, ma resta una dichiarazione legale
+      di cui il titolare risponde. Da confermare in particolare la base
+      giuridica scelta (consenso, art. 6.1.a) e il periodo di conservazione,
+      oggi espresso come "il tempo necessario" e non con una durata precisa
+- [x] Gerarchia dei titoli sistemata. `SectionHeading` accetta `as?: 'h1' | 'h2'`
+      e `/blog` la usa: era l'unica rotta senza radice, perché case study e post
+      un `h1` ce l'avevano già. Aprendo le rotte in un browser è però emerso che
+      `/blog/[slug]` ne aveva **due** — il titolo era scritto sia nel frontmatter
+      sia come `#` in testa al Markdown. Rimossa la riga duplicata dai due post
+      e mappato `h1 → h2` in `compileMDX`, così vale anche per i post futuri
 - [ ] Rivedere il sottotitolo della hero: `role · tagline` fa 77 caratteri e da
       `lg` in su sta in una colonna di ~536px, quindi manda a capo su tre righe.
       Da guardare su schermo prima di decidere se accorciare la tagline
 
 ### Debito residuo
 - [ ] Completare i test sui componenti. Coperti: `Button`, `Field`, `Badge`, `Hero`,
-      `Contact`, `Projects`, `WhatsAppFloat` (suite da 23 a 168 test). Restano
-      scoperti `SectionHeading`, `SocialIcons` e `Starfield` — quest'ultimo solo
-      indirettamente via `Hero.test.tsx`: il loop e le tre condizioni di stop
-      richiederebbero un mock del contesto 2D
+      `Contact`, `Projects`, `WhatsAppFloat`, `SiteFooter`, `CookieBanner`,
+      `Metrics`, `SectionHeading` e le rotte `/privacy` e `/blog` (suite da 23 a
+      225 test). Restano scoperti `SocialIcons`, `SiteHeader` e `Starfield` —
+      quest'ultimo solo indirettamente via `Hero.test.tsx`: il loop e le tre
+      condizioni di stop richiederebbero un mock del contesto 2D
 - [ ] Valutare se `Field` debba cablare da sé `aria-describedby` e `aria-invalid`
       sul figlio invece di lasciarlo a ogni chiamante: oggi `Contact.tsx` riscrive
       l'id a mano come stringa letterale, e nessun type-check sorveglia quel legame
