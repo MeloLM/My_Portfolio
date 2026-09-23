@@ -272,6 +272,13 @@ export const headline =
  * Quattro e non tre o cinque: la griglia è `grid-cols-2 lg:grid-cols-4`, quindi
  * un numero non multiplo di quattro lascerebbe una riga spaiata sul desktop. Un
  * test lo presidia.
+ *
+ * ⚠️ "10+" **non** va derivato da `projects.length`, per quanto la tentazione sia
+ * forte: la vetrina ne espone sei, ma il conteggio comprende lavori passati,
+ * offline o coperti da NDA che non compaiono e non compariranno. I due numeri
+ * misurano cose diverse — quanto è stato realizzato contro quanto è mostrabile —
+ * e agganciarli farebbe scendere il primo a ogni progetto ritirato dalla
+ * vetrina. È una scelta deliberata, non una svista.
  */
 export const metrics: readonly Metric[] = [
   { value: '2+', label: 'Anni di studio' },

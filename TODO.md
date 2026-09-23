@@ -134,10 +134,10 @@ nella vecchia codebase.
       "Progetti realizzati" va a capo e con `flex-col-reverse` spingeva in alto
       il proprio numero. Risolto con `justify-end`; i valori ora condividono la
       stessa linea (354/354 e 474/474 su mobile, 454×4 su desktop)
-- [ ] Decidere il valore di "10+ Progetti realizzati": il data layer ne espone
-      **sei**, tutti visibili nella griglia della stessa pagina. Se il numero
-      comprende lavori non in vetrina va bene così; altrimenti conviene
-      derivarlo da `projects.length` e toglierlo dalla manutenzione manuale
+- [x] "10+ Progetti realizzati" resta un valore scritto a mano. Comprende
+      lavori passati, offline o sotto NDA che non sono in vetrina: non va
+      derivato da `projects.length`, che conta solo ciò che è mostrabile.
+      Motivazione annotata accanto al dato, dove qualcuno la cercherà
 - [ ] Verificare in DevTools sul deploy reale che l'informativa dica il vero:
       scheda Application → Cookies e Storage vuote, e nel pannello Network
       nessuna richiesta verso domini di terze parti. Il codice non ne contiene,
