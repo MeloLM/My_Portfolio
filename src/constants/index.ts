@@ -19,10 +19,16 @@
  * Alimenta `metadataBase`, canonical, OpenGraph, JSON-LD, `sitemap.ts` e
  * `robots.ts`: è l'unico punto da cambiare per migrare dominio.
  *
- * Nota: punta ancora al dominio Vercel perché carmelolamantia.it non è
+ * Nota: punta al dominio Vercel perché carmelolamantia.it non è ancora
  * configurato a livello DNS.
+ *
+ * ⚠️ Non coincide con l'URL della card "Portfolio v1" in `profileData`, e non
+ * deve: quello è l'indirizzo del sito precedente, che resta online. Fino alla
+ * V2.2 i due erano lo stesso host, quindi il sito dichiarava come proprio
+ * canonical l'indirizzo che presentava come progetto passato. Un test ora
+ * impedisce che tornino a coincidere.
  */
-export const SITE_URL = 'https://my-profile-ten-beta.vercel.app';
+export const SITE_URL = 'https://my-portfolio-vert-ten-56.vercel.app';
 
 // ============================================================================
 // TIMING (millisecondi)

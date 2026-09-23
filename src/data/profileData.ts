@@ -454,6 +454,11 @@ export const projects: readonly Project[] = [
       'SEO server-side: Metadata API, JSON-LD, sitemap e robots dinamici',
     ],
     imgUrl: '/img/portfolio-v1.webp',
+    /*
+      Host diverso da `SITE_URL` di proposito: questo è il deployment della V1,
+      che resta online come riferimento. Allinearlo al sito corrente farebbe
+      linkare la card a se stessa.
+    */
     url: 'https://my-profile-ten-beta.vercel.app/',
     linkType: 'live',
     tech: ['Next.js 14', 'TypeScript'],

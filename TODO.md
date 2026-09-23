@@ -88,11 +88,11 @@ nella vecchia codebase.
       deriva da `personalInfo.phone` togliendo i non-cifra, quindi il numero resta
       in un solo punto e alimenta insieme `tel:` e la chat. Nessuna esposizione
       nuova: il numero era già pubblicato e reso come link `tel:` in pagina
-- [ ] Decidere `SITE_URL`: oggi vale `my-profile-ten-beta.vercel.app`, **lo stesso
-      host della card "Portfolio v1"**. Il sito dichiara come proprio canonical
-      l'URL che elenca come progetto precedente. Da sciogliere quando si sa dove
-      viene pubblicata la V2: alimenta `metadataBase`, canonical, OpenGraph,
-      JSON-LD, `sitemap.ts` e `robots.ts`
+- [x] `SITE_URL` sciolto: la V2 è pubblicata su `my-portfolio-vert-ten-56`.
+      Canonical, OpenGraph, JSON-LD, `sitemap.ts` e `robots.ts` seguono da soli,
+      perché leggono tutti quella costante. La card "Portfolio v1" resta sul
+      vecchio host, che è ancora online, e un test impedisce ai due di tornare a
+      coincidere come accadeva prima. Link "Sito" del README allineato
 - [x] Allineare i dati di località: nuovo campo `personalInfo.city` agganciato a
       `addressLocality` del JSON-LD e alle keyword SEO, che prima dichiaravano
       "Agrigento" scritto a mano. Accento di "Canicattì" uniformato e README
@@ -161,7 +161,7 @@ nella vecchia codebase.
 - [ ] Completare i test sui componenti. Coperti: `Button`, `Field`, `Badge`, `Hero`,
       `Contact`, `Projects`, `WhatsAppFloat`, `SiteFooter`, `CookieBanner`,
       `Metrics`, `SectionHeading` e le rotte `/privacy` e `/blog` (suite da 23 a
-      225 test). Restano scoperti `SocialIcons`, `SiteHeader` e `Starfield` —
+      226 test). Restano scoperti `SocialIcons`, `SiteHeader` e `Starfield` —
       quest'ultimo solo indirettamente via `Hero.test.tsx`: il loop e le tre
       condizioni di stop richiederebbero un mock del contesto 2D
 - [ ] Valutare se `Field` debba cablare da sé `aria-describedby` e `aria-invalid`

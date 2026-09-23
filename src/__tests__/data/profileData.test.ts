@@ -9,6 +9,7 @@
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
+import { SITE_URL } from '../../constants';
 import {
   headline,
   metaDescription,
@@ -77,6 +78,20 @@ describe('projects', () => {
       expect(project.problem.length).toBeGreaterThan(0);
       expect(project.solution.length).toBeGreaterThan(0);
       expect(project.results.length).toBeGreaterThan(0);
+    }
+  });
+
+  it('non elenca il sito stesso fra i progetti passati', () => {
+    // Fino alla V2.2 la card "Portfolio v1" puntava allo stesso host di
+    // `SITE_URL`: il sito dichiarava come proprio canonical l'indirizzo che
+    // presentava come lavoro precedente, e la card linkava a se stessa.
+    // Nessun type-check poteva vederlo — sono due stringhe entrambe valide.
+    const sito = new URL(SITE_URL).host;
+
+    for (const project of projects) {
+      expect(new URL(project.url).host, `${project.title} punta al sito corrente`).not.toBe(
+        sito
+      );
     }
   });
 
